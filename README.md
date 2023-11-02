@@ -2,6 +2,9 @@
 Repository to update all my Competitive Programming Templates
 
 ## Sections
+### Basic Template
+1. [Template](https://github.com/shucshin/CompetitiveProgramming/blob/main/tem.cpp)
+
 ### Ad-hoc
 1. [Bitmask](https://github.com/shucshin/CompetitiveProgramming/blob/main/bitmask.cpp)
 1. [Base](https://github.com/shucshin/CompetitiveProgramming/blob/main/base.cpp)
@@ -29,7 +32,6 @@ Repository to update all my Competitive Programming Templates
 1. [Implementation](https://github.com/shucshin/CompetitiveProgramming/blob/main/implementation.cpp)
 1. [Bit Implementation](https://github.com/shucshin/CompetitiveProgramming/blob/main/implementation_bit.cpp)
 1. [Binary Search Implementation](https://github.com/shucshin/CompetitiveProgramming/blob/main/implementation_bs.cpp)
-1. [Graph Implementation](https://github.com/shucshin/CompetitiveProgramming/blob/main/implementation_graph.cpp)
 
 ### Dynamic Programming
 1. [Dynamic Programming](https://github.com/shucshin/CompetitiveProgramming/blob/main/DP.cpp)
