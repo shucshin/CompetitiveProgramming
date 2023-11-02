@@ -60,9 +60,10 @@ void dijkstraPQ(ll s, ll x=-1) { // Exclude node x
 vi getPath(ll u) {
     vi A = {u};
     while(p[u] != -1) {
-        A.insert(A.begin(), p[u]);
+        A.pb(p[u]);
         u = p[u];
-    } return A;
+    } reverse(all(A));
+    return A;
 }
 
 // g++ A.cpp -o A && ./A < in.txt > out.txt
