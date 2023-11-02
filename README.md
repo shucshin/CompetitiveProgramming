@@ -24,7 +24,7 @@ Repository to update all my Competitive Programming Templates
 
 ### 1234567890
 1. [Number Theory](https://github.com/shucshin/CompetitiveProgramming/blob/main/num_theory.cpp)
-1. [Math](https://github.com/shucshin/CompetitiveProgramming/blob/main/Math.cpp)
+1. [Math](https://github.com/shucshin/CompetitiveProgramming/blob/main/math.cpp)
 1. [Combinatorics](https://github.com/shucshin/CompetitiveProgramming/blob/main/combinatorics.cpp)
 
 
@@ -44,13 +44,13 @@ Repository to update all my Competitive Programming Templates
 1. [Treap](https://github.com/shucshin/CompetitiveProgramming/blob/main/treap.cpp)
 
 ### Graph
-1. [Graph](https://github.com/shucshin/CompetitiveProgramming/blob/main/graph.cpp)
-1. [Dijkstra](https://github.com/shucshin/CompetitiveProgramming/blob/main/dijkstra.cpp)
+1. [Graph](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph.cpp)
+1. [Dijkstra](https://github.com/shucshin/CompetitiveProgramming/blob/main/Dijkstra.cpp)
 1. [Topological Sort](https://github.com/shucshin/CompetitiveProgramming/blob/main/Toposort.cpp)
 1. [Disjoint Set Union](https://github.com/shucshin/CompetitiveProgramming/blob/main/DSU.cpp)
 1. [Lowest Common Ancestor](https://github.com/shucshin/CompetitiveProgramming/blob/main/LCA.cpp)
 1. [Minimum Spanning Tree](https://github.com/shucshin/CompetitiveProgramming/blob/main/MST.cpp)
-1. [Articulation Points and Bridges](https://github.com/shucshin/CompetitiveProgramming/blob/main/bridges.cpp)
+1. [Articulation Points and Bridges](https://github.com/shucshin/CompetitiveProgramming/blob/main/Bridges.cpp)
 1. [Strongly Connected Components](https://github.com/shucshin/CompetitiveProgramming/blob/main/SCC.cpp)
 
 ### Geometry
