@@ -1,3 +1,4 @@
+// Dijkstra Algorithm
 #include <bits/stdc++.h>
 using namespace std;
 using lli = __int128;
@@ -17,7 +18,6 @@ const ll INF = 1e18;
 
 vector<vector<pi>> AL;
 vi d, p; // d = distance, p = parent
-ll n;
 
 // Dijkstra with Set (Red-Black Trees), supports removing elems
 void dijkstraSet(ll s, ll x=-1) { // Exclude node x
@@ -69,8 +69,10 @@ vi getPath(ll u) {
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-    n = 9;
-    AL.assign(n,{});
+    ll n, m, u, v, w;
+    n = 8;
+    AL.assign(n+1,{}); d.assign(n+1,INF); p.assign(n+1,-1);
+
     AL[1].pb({2,2}); AL[2].pb({1,2});
     AL[1].pb({3,3}); AL[3].pb({1,3});
     AL[2].pb({5,8}); AL[5].pb({2,8});
@@ -83,8 +85,6 @@ int main() {
     AL[7].pb({8,1}); AL[8].pb({7,1});
     AL[1].pb({7,5}); AL[7].pb({1,5});
 
-    d.assign(n,INF); p.assign(n,-1);
-
     dijkstraPQ(1);
     FOR(i,1,9) cout << d[i] << " "; cout << endl;
     FOR(i,1,9) cout << p[i] << " "; cout << endl;
@@ -93,9 +93,6 @@ int main() {
         vi A = getPath(i);
         cout << "Path: "; for(auto a : A) cout << a << " "; cout << endl;
     }
-
-
-
 
     return 0;
 }
