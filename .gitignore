@@ -3,6 +3,7 @@
 *.txt
 A
 _A.cpp
+A.cpp
 B.cpp
 _ChallengingHikeSUBREGIONAL.cpp
 ChessKattis.cpp
