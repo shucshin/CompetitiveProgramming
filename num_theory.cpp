@@ -14,6 +14,8 @@ using pi = pair<ll,ll>;
 #define all(a) (a).begin(), (a).end()
 const ll MOD = 1e9+7;
 const ll INF = 1e9;
+ll gcd(ll a, ll b) {return b?gcd(b,a%b):a;}
+ll lcm(ll a, ll b) {return (a/gcd(a,b))*b;}
 
 //==cout << __int128==
 ostream&operator<<(ostream& dest, __int128_t value){
@@ -78,16 +80,6 @@ ll trailingZeros(ll n) {
     return z;
 }
 
-//==Check if n is prime==
-bool isPrime(ll n) {
-    if(n <= 1) return 0;
-    if(n <= 3) return 1;
-    if(n%2==0 || n%3==0) return 0;
-    for(ll i = 5; i*i <= n; i+=6) {
-        if(n%i==0 || n%(i+2)==0) return 0;
-    } return 1;
-}
-
 //==Check if a^2-b^2 is prime==
 bool isDiffPrime(ll a, ll b) {
     return (isPrime(a+b) && a-b==1) ? 1 : 0;
@@ -97,6 +89,16 @@ bool isDiffPrime(ll a, ll b) {
 // Sum of n numbers div by k and max elem of arr is min possible
 ll kDivSum(ll n, ll k) {
 	return (n+(k*((n+k-1)/k))-1)/n;
+}
+
+//==Check if n is prime==
+bool isPrime(ll n) {
+    if(n <= 1) return 0;
+    if(n <= 3) return 1;
+    if(n%2==0 || n%3==0) return 0;
+    for(ll i = 5; i*i <= n; i+=6) {
+        if(n%i==0 || n%(i+2)==0) return 0;
+    } return 1;
 }
 
 //==Prime Factors of N==
@@ -132,6 +134,14 @@ vi divisors(ll n) {
 	vi d; d.pb(1); d.pb(n); 
 	for(ll i=2; i*i<=n; i++) {
 		if(n% i==0) i*i==n ? d.pb(i) : (d.pb(i), d.pb(n/i));} 
+	return d;
+}
+
+//==Divisors of N in Set==
+set<ll> divisorsSet(ll n) {
+	set<ll> d; d.insert(1); d.insert(n); 
+	for(ll i=2; i*i<=n; i++) {
+		if(n% i==0) i*i==n ? d.insert(i) : (d.insert(i), d.insert(n/i));} 
 	return d;
 }
 

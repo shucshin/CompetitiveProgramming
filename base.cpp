@@ -53,9 +53,7 @@ int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
     // ll n; cin >> n;
-    string s = "10B";
+    string s = "3F";
     cout << convert_base(s,16,10) << endl;
-
-
     return 0;
 }
