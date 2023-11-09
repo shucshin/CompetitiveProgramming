@@ -13,6 +13,7 @@ using pi = pair<ll,ll>;
 #define FOR(i,a,b) for(int i = (a); i < (b); i++)
 #define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
 #define all(a) (a).begin(), (a).end()
+#define rall(a) (a).rbegin(), (a).rend()
 const ll MOD = 1e9+7;
 
 //==1 to n-k+1, reverse substring of length k
@@ -196,6 +197,36 @@ ll smilo_monsters(vi &A) {
     vi pfx(n+1); FOR(i,1,n+1) pfx[i]=pfx[i-1]+A[i-1];
     while(pfx[k] < sum/2) k++; // 2nd move is only used on k biggest nums that form half of the sum
     return (sum+1)/2+k;
+}
+
+// Codeforces Round 908 Div. 2 | C. Anonymous Informant
+/* Given the final array with k operations applied,
+   determine if initial array actually exists.
+   Operation: - Choose fixed point(idx x = A[x])
+              - Rotate to left x times. */
+bool anonymous_informant(vi &A, ll k) {
+    ll n = A.size(), x = n-1; k = min(k,n);
+    FOR(_,0,k) {
+        if(A[x] > n) return false;
+        x -= A[x]; if(x < 0) x += n;
+        // x += (n-A[x]); if(x >= n) x -= n;
+    } return true;
+}
+
+// Codeforces Round 908 Div. 2 | D. Neutral Tonality
+/* Given arrays A, B; insert elems of B in any order
+   to A in order to minimize Longest Increasing Subsequence */
+vi neutral_tonality(vi &A, vi &B) {
+    sort(rall(B)); vi C;
+    int n = A.size(), m = B.size(), x = 0; // pointer
+    FOR(i,0,n) {
+        while(x < m && B[x] > A[i]) {
+            C.pb(B[x]); x++;
+        } C.pb(A[i]);
+    } while(x < m) {C.pb(B[x]); x++;} // the remaining
+    return C;
+    /* All the process above can be done in a single line:
+    vi C(n+m); merge(all(A), all(B), C.begin(), greater<ll>()); */
 }
 
 // g++ A.cpp -o A && ./A < input.txt

@@ -12,6 +12,8 @@ using pi = pair<ll,ll>;
 #define FOR(i,a,b) for(int i = (a); i < (b); i++)
 #define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
 #define all(a) (a).begin(), (a).end()
+#define lb(v,a) lower_bound(all(v),a)-v.begin()
+#define ub(v,a) upper_bound(all(v),a)-v.begin()
 const ll MOD = 1e9+7;
 const ll INF = 1e9;
 

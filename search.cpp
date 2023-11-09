@@ -3,6 +3,9 @@ using namespace std;
 using ll = long long;
 using vi = vector<ll>;
 #define endl '\n'
+#define all(a) (a).begin(), (a).end()
+#define lb(v,a) lower_bound(all(v),a)-v.begin()
+#define ub(v,a) upper_bound(all(v),a)-v.begin()
 
 int binarySearch(vi &v, int x) {
     int l = 0, r = v.size()-1; 

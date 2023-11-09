@@ -15,6 +15,13 @@ using pi = pair<ll,ll>;
 const ll MOD = 1e9+7;
 const ll INF = 1e9;
 
+string tobinary(ll n) {
+    string s = "";
+    RFOR(i,0,(int)log2(n)+1) {
+        1&(n>>i) ? s+="1" : s+="0";
+    } return s;
+}
+
 
 //==Two nums that are sum s and xor x==
 pi sumxor(ll s, ll x) {
@@ -92,9 +99,5 @@ int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
     
-
-
-
-
     return 0;
 }

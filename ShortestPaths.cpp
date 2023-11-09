@@ -1,4 +1,4 @@
-// Dijkstra Algorithm
+// Single-Source Shortest Paths with Unweighted Edges
 #include <bits/stdc++.h>
 using namespace std;
 using lli = __int128;
@@ -15,42 +15,42 @@ using pi = pair<ll,ll>;
 #define all(a) (a).begin(), (a).end()
 const ll MOD = 1e9+7;
 const ll INF = 1e18;
+const ll MXN = 5e2+5;
 
-vector<vector<pi>> AL;
-vi d, p; // d = distance, p = parent
+struct Edge {ll u, v, w;};
+vector<Edge> edges;
 
-// Dijkstra with Set (Red-Black Trees), supports removing elems
-void dijkstraSet(ll s, ll x=-1) { // Exclude node x
-    set<pi> q;
-    q.insert({0,s}); d[s] = 0;
-    while(!q.empty()) {
-        ll u = q.begin()->snd; q.erase(q.begin());
-        if(u == x) continue;
-        for(auto a : AL[u]) {
-            ll v = a.fst, w = a.snd;
-            if(d[u] + w < d[v]) {
-                q.erase({d[v],v});
-                d[v] = d[u]+w;
-                p[v] = u;
-                q.insert({d[v],v});
-            }
-        }
+vector<vi> AL;
+vi vis, d, p; // d = distance, p = parent
+
+// Depth First Search
+void dfs(ll u) {
+    vis[u] = 1;
+    for(auto v : AL[u]) {
+        if(!vis[v]) dfs(v);
     }
 }
 
-// Dijkstra with priority_queue (Heaps), vertex can appear multiple times with diff dst
-void dijkstraPQ(ll s, ll x=-1) { // Exclude node x
-    priority_queue<pi, vector<pi>, greater<pi>> pq;
-    pq.push({0,s}); d[s] = 0;
-    while(!pq.empty()) {
-        ll u = pq.top().snd, d_u = pq.top().fst; pq.pop();
-        if(u == x || d_u != d[u]) continue;
-        for(auto a : AL[u]) {
-            ll v = a.fst, w = a.snd;
-            if(d[u] + w < d[v]) {
-                d[v] = d[u] + w;
+// Distances w/ recursive dfs when there's no cycles
+void dfs(int u, int p=-1) {
+    if(p != -1) {d[u] = d[p]+1;}
+    for(auto v : AL[u]) {
+        if(v != p) dfs(v,u);
+    }
+}
+
+// Breath First Search
+void bfs(ll s) {
+    vis[s] = 1;
+    queue<ll> q; q.push(s);
+    while(!q.empty()) {
+        ll u = q.front(); q.pop();
+        for(auto v : AL[u]) {
+            if(!vis[v]) {
+                vis[v] = 1;
+                d[v] = d[u]+1;
                 p[v] = u;
-                pq.push({d[v],v});
+                q.push(v);
             }
         }
     }
@@ -66,27 +66,36 @@ vi getPath(ll u) {
     return A;
 }
 
+
 // g++ A.cpp -o A && ./A < in.txt > out.txt
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-    ll n, m, u, v, w;
+    ll n, m, u, v; // cin >> n >> m;
     n = 8;
-    AL.assign(n+1,{}); d.assign(n+1,INF); p.assign(n+1,-1);
+    AL.assign(n+1,{}); d.assign(n+1,0); p.assign(n+1,-1), vis.assign(n+1,0);
 
-    AL[1].pb({2,2}); AL[2].pb({1,2});
-    AL[1].pb({3,3}); AL[3].pb({1,3});
-    AL[2].pb({5,8}); AL[5].pb({2,8});
-    AL[2].pb({4,2}); AL[4].pb({2,2});
-    AL[4].pb({7,4}); AL[7].pb({4,4});
-    AL[3].pb({6,1}); AL[6].pb({3,1});
-    AL[5].pb({6,3}); AL[6].pb({5,3});
-    AL[5].pb({7,10}); AL[7].pb({5,10});
-    AL[6].pb({8,4}); AL[8].pb({6,4});
-    AL[7].pb({8,1}); AL[8].pb({7,1});
-    AL[1].pb({7,5}); AL[7].pb({1,5});
+    // FOR(_,0,m) { cin >> u >> v; AL[u].pb(v); AL[v].pb(u); }
+    AL[1].pb(2); AL[2].pb(1);
+    AL[1].pb(3); AL[3].pb(1);
+    AL[2].pb(5); AL[5].pb(2);
+    AL[2].pb(4); AL[4].pb(2);
+    AL[4].pb(7); AL[7].pb(4);
+    AL[3].pb(6); AL[6].pb(3);
+    AL[5].pb(6); AL[6].pb(5);
+    AL[5].pb(7); AL[7].pb(5);
+    AL[6].pb(8); AL[8].pb(6);
+    AL[7].pb(8); AL[8].pb(7);
+    AL[1].pb(7); AL[7].pb(1);
 
-    dijkstraPQ(1);
+    /* FOR(_,0,m) {
+        cin >> u >> v;
+        Edge e; e.u = u; u.v = v;
+        edges.pb(e);
+    } */
+
+    bfs(1);
+    FOR(i,1,9) cout << vis[i] << " "; cout << endl;
     FOR(i,1,9) cout << d[i] << " "; cout << endl;
     FOR(i,1,9) cout << p[i] << " "; cout << endl;
 

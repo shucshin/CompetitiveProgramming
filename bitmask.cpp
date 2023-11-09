@@ -2,6 +2,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
+#define FOR(i,a,b) for(int i = (a); i < (b); i++)
+#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
+
+string tobinary(ll n) {
+    string s = "";
+    RFOR(i,0,(int)log2(n)+1) {
+        1&(n>>i) ? s+="1" : s+="0";
+    } return s;
+}
 
 int main() {
     // Binary to decimal
