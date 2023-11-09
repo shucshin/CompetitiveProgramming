@@ -45,6 +45,9 @@ Repository to update all my Competitive Programming Templates
 
 ### Graph
 1. [Graph](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph.cpp)
+1. [Shortest Paths](https://github.com/shucshin/CompetitiveProgramming/blob/main/ShortestPaths.cpp)
+1. [Floyd Warshall](https://github.com/shucshin/CompetitiveProgramming/blob/main/FloydWarshall.cpp)
+1. [Bellman-Ford](https://github.com/shucshin/CompetitiveProgramming/blob/main/BellmanFord.cpp)
 1. [Dijkstra](https://github.com/shucshin/CompetitiveProgramming/blob/main/Dijkstra.cpp)
 1. [Topological Sort](https://github.com/shucshin/CompetitiveProgramming/blob/main/Toposort.cpp)
 1. [Disjoint Set Union](https://github.com/shucshin/CompetitiveProgramming/blob/main/DSU.cpp)
