@@ -16,14 +16,13 @@ const ll MOD = 1e9+7;
 class Graph {
 private:
     vector<vi> graph; int MAXN;
-    vi vis, dist, color, subtree;
+    vi vis, dist, subtree;
 public:
     Graph(int n) {
         MAXN = n;
         graph.assign(n,{});
         vis.assign(n,0);
         dist.assign(n,0);
-        color.assign(n,INF);
         subtree.assign(n,0);
     }
     vector<vi> getGraph() {return graph;}
@@ -37,22 +36,6 @@ public:
             subtrees(v,u);
             subtree[u] += subtree[v];
         }
-    }
-
-    pair<bool,vi> bipartite_check() {
-        bool bipartite = 1; queue<ll> q;
-        FOR(i,0,MAXN) {
-            if((color[i]==INF && graph[i].empty()) || color[i] != INF) continue;
-            q.push(i); color[i] = 0;
-            while(!q.empty()) {
-                ll u = q.front(); q.pop();
-                for(auto &v : graph[u]) {
-                    if(color[v] == INF) {color[v] = color[u]^1; q.push(v);} 
-                    else {bipartite &= color[u] != color[v];}
-                }
-            }
-        }
-        return {bipartite,color};
     }
 };
 
@@ -91,6 +74,5 @@ int main() {
         cout << sub[i] << " ";
     } cout << endl;
 
-    cout << graph.bipartite_check().fst << endl;
     return 0;
 }

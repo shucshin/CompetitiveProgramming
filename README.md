@@ -46,6 +46,7 @@ Repository to update all my Competitive Programming Templates
 
 ### Graph
 1. [Graph](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph.cpp)
+1. [Bipartite Check](https://github.com/shucshin/CompetitiveProgramming/blob/main/Bipartite.cpp)
 1. [Shortest Paths](https://github.com/shucshin/CompetitiveProgramming/blob/main/ShortestPaths.cpp)
 1. [Floyd Warshall](https://github.com/shucshin/CompetitiveProgramming/blob/main/FloydWarshall.cpp)
 1. [Bellman-Ford](https://github.com/shucshin/CompetitiveProgramming/blob/main/BellmanFord.cpp)
