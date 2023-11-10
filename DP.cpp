@@ -13,6 +13,19 @@ using vi = vector<ll>;
 #define ub(v,a) upper_bound(all(v),a)-v.begin()
 const ll INF = 1e9;
 
+//==Subset Sum==
+// Determine is there is subset that sums x
+bool subset_sum(vi &A, ll x) {
+    ll n = A.size();
+    vi dp(x+1); dp[0] = 1;
+    FOR(i,0,n) {
+        RFOR(j,A[i],x+1) {
+            if(dp[j-A[i]]==1) dp[j] = 1;
+        }
+    }
+    return dp[x]==1;
+}
+
 //==Longest Increasing Subsequence==
 ll LIS(vi &A) {
     vi dp;

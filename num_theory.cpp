@@ -17,6 +17,40 @@ const ll INF = 1e9;
 ll gcd(ll a, ll b) {return b?gcd(b,a%b):a;}
 ll lcm(ll a, ll b) {return (a/gcd(a,b))*b;}
 
+// Binary GCD
+ll gcd_bin(ll a, ll b) {
+    if(!a || !b) return a | b;
+    unsigned shift = __builtin_ctz(a|b);
+    a >>= __builtin_ctz(a);
+    do {
+        b >>= __builtin_ctz(b);
+        if(a > b) swap(a,b);
+        b -= a;
+    } while(b);
+    return a << shift;
+}
+
+// Recursive Extended GCD
+ll gcd_ext(ll a, ll b, ll &x, ll &y) {
+    if (b == 0) {x = 1; y = 0; return a;}
+    ll x1, y1, d = gcd(b, a % b, x1, y1);
+    x = y1; y = x1-y1*(a/b);
+    return d;
+}
+
+// Iterative Extended GCD
+ll gcd(ll a, ll b, ll &x, ll &y) {
+    x = 1, y = 0;
+    ll x1 = 0, y1 = 1, a1 = a, b1 = b;
+    while(b1) {
+        ll q = a1/b1;
+        tie(x, x1) = make_tuple(x1, x - q * x1);
+        tie(y, y1) = make_tuple(y1, y - q * y1);
+        tie(a1, b1) = make_tuple(b1, a1 - q * b1);
+    }
+    return a1;
+}
+
 //==cout << __int128==
 ostream&operator<<(ostream& dest, __int128_t value){
     ostream::sentry s(dest);
@@ -38,6 +72,24 @@ lli binpow(lli a, lli b) {
 	if(b & 1ll) r *= a; 
 	a *= a; b >>= 1ll;
     } return r;
+}
+
+//==Sum from a to b==
+ll gauss(ll a, ll b) {
+    return (b-a+1)*(a+b)/2;
+}
+
+//==Sum of odd numbers from a to b w/ exponents==
+ll sum_odd(ll a, ll b) {
+    return binpow((b+1)/2,2)-binpow(a/2,2);
+}
+
+//==Sum of odd numbers from a to b==
+ll sumOdd(ll a, ll b) {
+    if(a%2==0) a++;
+    if(b%2==0) b--;
+    ll n = (b-a+2)/2;
+    return n*(a+b)/2;
 }
 
 //==Sum of first n potencies of base x==
@@ -89,6 +141,11 @@ bool isDiffPrime(ll a, ll b) {
 // Sum of n numbers div by k and max elem of arr is min possible
 ll kDivSum(ll n, ll k) {
 	return (n+(k*((n+k-1)/k))-1)/n;
+}
+
+//==Sum of odd numbers from a to b==
+ll sum_odd(ll a, ll b) {
+    return binpow((b+1)/2,2)-binpow((a+1)/2,2);
 }
 
 //==Check if n is prime==
@@ -170,6 +227,20 @@ vi primes(ll n) {
 	if(p[i]) {for(ll j=i*i; j<=n; j+=i) p[j]=0;}} 
 	FOR(i,0,n+1) {if(p[i]) q.pb(i);}
 	return q;
+}
+
+//==Linear Sieve==
+// returns minimum prime factor lp[i]
+vi linear_sieve(ll n) {
+    vi lp(n+1), pr; 
+    for(ll i=2; i <= n; i++) {
+        if(lp[i]==0) {lp[i]=i; pr.pb(i);}
+        for(ll j=0; i*pr[j] <= n; j++) {
+            lp[i*pr[j]] = pr[j];
+            if(pr[j]==lp[i]) break;
+        }
+    }
+    return lp;
 }
 
 // Codeforces Round 595 Div. 3 | C. Good Numbers
