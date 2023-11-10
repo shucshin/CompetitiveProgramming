@@ -39,6 +39,7 @@ Repository to update all my Competitive Programming Templates
 ### Data Structures
 1. [Sparse Table](https://github.com/shucshin/CompetitiveProgramming/blob/main/sparse.cpp)
 1. [Fenwick Tree](https://github.com/shucshin/CompetitiveProgramming/blob/main/fenwick.cpp)
+1. [Segment Tree](https://github.com/shucshin/CompetitiveProgramming/blob/main/segtree.cpp)
 1. [Segment Tree RMQ](https://github.com/shucshin/CompetitiveProgramming/blob/main/segtreeRMQ.cpp)
 1. [Segment Tree Sum](https://github.com/shucshin/CompetitiveProgramming/blob/main/segtreeSum.cpp)
 1. [Treap](https://github.com/shucshin/CompetitiveProgramming/blob/main/treap.cpp)

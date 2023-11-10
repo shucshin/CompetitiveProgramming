@@ -17,7 +17,7 @@ const ll MOD = 1e9+7;
 const ll INF = 1e18;
 const ll MXN = 5e2+5;
 
-struct Edge {ll u, v, w;};
+struct Edge {ll u, v;};
 vector<Edge> edges;
 
 vector<vi> AL;
@@ -71,11 +71,15 @@ vi getPath(ll u) {
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-    ll n, m, u, v; // cin >> n >> m;
-    n = 8;
+    ll n, m, q, u, v; n = 9; // cin >> n >> m;
     AL.assign(n+1,{}); d.assign(n+1,0); p.assign(n+1,-1), vis.assign(n+1,0);
 
-    // FOR(_,0,m) { cin >> u >> v; AL[u].pb(v); AL[v].pb(u); }
+    /* FOR(_,0,m) { 
+        cin >> u >> v; 
+        AL[u].pb(v); AL[v].pb(u); 
+        edges.pb({u,v});
+    } */
+
     AL[1].pb(2); AL[2].pb(1);
     AL[1].pb(3); AL[3].pb(1);
     AL[2].pb(5); AL[5].pb(2);
@@ -88,19 +92,14 @@ int main() {
     AL[7].pb(8); AL[8].pb(7);
     AL[1].pb(7); AL[7].pb(1);
 
-    /* FOR(_,0,m) {
-        cin >> u >> v;
-        Edge e; e.u = u; u.v = v;
-        edges.pb(e);
-    } */
-
     bfs(1);
-    FOR(i,1,9) cout << vis[i] << " "; cout << endl;
-    FOR(i,1,9) cout << d[i] << " "; cout << endl;
-    FOR(i,1,9) cout << p[i] << " "; cout << endl;
+    FOR(i,1,10) cout << vis[i] << " "; cout << endl;
+    FOR(i,1,10) cout << d[i] << " "; cout << endl;
+    FOR(i,1,10) cout << p[i] << " "; cout << endl;
 
-    FOR(i,1,9) {
+    FOR(i,1,10) {
         vi A = getPath(i);
+        if(A[0] != 1) {cout << "No Path\n"; continue;}
         cout << "Path: "; for(auto a : A) cout << a << " "; cout << endl;
     }
 
