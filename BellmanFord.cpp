@@ -22,21 +22,19 @@ vector<Edge> edges;
 vector<vector<pi>> AL;
 vi d, p; // d = distance, p = parent
 
-// Bellman-Ford
+// Bellman-Ford (No Negative Edges)
 void bellmanFord(ll s) {
     d[s] = 0;
     for(;;) {
         bool any = 0;
-        for(Edge e : edges) {
-            ll u = e.u, v = e.v, w = e.w;
-            if(d[u] < INF) {
-                if(d[v] > d[u]+w) {
-                    d[v] = d[u]+w;
-                    p[v] = u;
+        for(Edge e : edges) 
+            if(d[e.u] < INF) 
+                if(d[e.v] > d[e.u]+e.w) {
+                    d[e.v] = d[e.u]+e.w;
+                    p[e.v] = e.u;
                     any = 1;
                 }
-            }
-        } if(!any) break;
+        if(!any) break;
     }
 }
 
@@ -50,27 +48,44 @@ vi getPath(ll s) {
 }
 
 // Finding Negative Cycle with Bellman-Ford
-vi bellmanFordNC(ll s) {
-    ll x, n = AL.size(); d[s] = 0;
-    FOR(i,0,n) {
+vi bellmanFordNC(ll s, ll n) { // d.assign(n+1,0); for Cycle Finding
+    ll x; d[s] = 0;
+    FOR(_,0,n) {
         x = -1;
-        for(Edge e : edges) {
-            ll u = e.u, v = e.v, w = e.w;
-            if(d[v] > d[u]+w) {
-                d[v] = d[u]+w;
-                p[v] = u;
-                x = v;
-            }
-        }
+        for(Edge e : edges)
+            if(d[e.u] < INF)
+                if(d[e.v] > d[e.u]+e.w) {
+                    d[e.v] = max(-INF,d[e.u]+e.w);
+                    p[e.v] = e.u;
+                    x = e.v;
+                }
     }
-    if(x==-1) {return {INF};} // no Neg Cycle
-    FOR(i,0,n) x = p[x];
+    if(x==-1) return {}; // no Neg Cycle
+    FOR(_,0,n) x = p[x];
     vi cycle;
     for(ll u=x;;u=p[u]) {
         cycle.pb(u);
         if(u==x && cycle.size()>1) break;
     } reverse(all(cycle));
     return cycle;
+}
+
+// All Nodes that belong in a Neg Cycle
+void negative_infinity(ll n) {
+    queue<ll> q; 
+    FOR(u,0,n) { // u,1,n+1 for 1-indexed
+        if(d[u] < INF)
+            for(auto [v,w] : AL[u]) 
+                if(d[v] > d[u]+w) q.push(v);
+    }
+    while(!q.empty()) {
+        ll u = q.front(); q.pop();
+        d[u] = -INF;
+        for(auto [v,w] : AL[u]) {
+            if(d[v]==-INF) continue;
+            q.push(v);
+        }
+    } cout << endl;
 }
 
 // Shortest Path Faster Algorithm, improvement of Bellman-Ford Algorithm
@@ -99,44 +114,31 @@ bool spfa(ll s) {
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-    ll n, m, u, v, w; // cin >> n >> m;
-    n = 8;
+    ll n, m, q, u, v, w; // cin >> n >> m;
     AL.assign(n+1,{}); d.assign(n+1,INF); p.assign(n+1,-1);
 
-    // FOR(_,0,m) { cin >> u >> v >> w; AL[u].pb({v,w}); AL[v].pb({u,w}); }
-    AL[1].pb({2,2}); AL[2].pb({1,2});
-    AL[1].pb({3,3}); AL[3].pb({1,3});
-    AL[2].pb({5,8}); AL[5].pb({2,8});
-    AL[2].pb({4,2}); AL[4].pb({2,2});
-    AL[4].pb({7,4}); AL[7].pb({4,4});
-    AL[3].pb({6,1}); AL[6].pb({3,1});
-    AL[5].pb({6,3}); AL[6].pb({5,3});
-    AL[5].pb({7,10}); AL[7].pb({5,10});
-    AL[6].pb({8,4}); AL[8].pb({6,4});
-    AL[7].pb({8,1}); AL[8].pb({7,1});
-    AL[1].pb({7,5}); AL[7].pb({1,5});
-
-    /* FOR(_,0,m) {
+    // Edges
+    FOR(_,0,m) {
         cin >> u >> v >> w;
-        Edge e; e.u = u; u.v = v; u.w = w;
-        edges.pb(e);
-    } */
-    edges = {{1,2,2}, {2,1,2}, 
-             {1,3,3}, {3,1,3}, 
-             {2,5,8}, {5,2,8}, 
-             {2,4,2}, {4,2,2},
-             {4,7,4}, {7,4,4},
-             {3,6,1}, {6,3,1},
-             {5,6,3}, {6,5,3},
-             {5,7,10}, {7,5,10},
-             {6,8,4}, {8,6,4},
-             {7,8,1}, {8,7,1},
-             {1,7,5}, {7,1,5}
-    };
+        edges.pb({u,v,w});
+        AL[u].pb({v,w}); // AL[v].pb({u,w});
+    } 
 
-    bellmanFord(1);
-    // bellmanFordNC(1); for(auto a : negCycle) cout << a << " "; cout << endl;
+    // bellmanFord(1); // No Neg Edges
+    vi A = bellmanFordNC(1,n+1); for(auto a : A) cout << a << " "; cout << endl;
+    negative_infinity(n);
     // !spfa(1) ? printf("Neg Cycle\n") : printf("No Neg Cycle\n");
+
+    // Queries
+    FOR(_,0,q) {
+        cin >> u;
+        if(d[u]==INF) cout << "Impossible\n"; // No Path
+        else if(d[u]==-INF) cout << "-Infinity\n"; // Neg Cycle
+        else cout << d[u] << endl;
+    }
+
+    // Reset
+    // edges.clear(); AL.clear(); d.clear(); p.clear(); 
 
     FOR(i,1,9) cout << d[i] << " "; cout << endl;
     FOR(i,1,9) cout << p[i] << " "; cout << endl;

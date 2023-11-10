@@ -85,7 +85,7 @@ void bfs01(ll s) {
     }
 }
 
-// D'Esopo-Pape Algorithm. Works with Non-Negative Edge Weights
+// D'Esopo-Pape Algorithm. Works with Negative Edge Weights
 void DEsopoPape(ll s) {
     deque<ll> q; q.pb(s); d[s] = 0;
     while(!q.empty()) {
