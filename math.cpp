@@ -63,6 +63,36 @@ ll diceMoves(ll n) {
     return ans;
 }
 
+//==Num of digits changed while adding 1 to a until reaching b==
+ll digits_changed(ll a, ll b) {
+    ll ans = 0;
+    while(a != 0 || b != 0) {
+        ans += b-a; 
+        a/=10; b/=10;
+    }
+    return ans;
+}
+
+//==Factorials==
+vi factorials(ll n) {
+    vi f(n+1,1); 
+    FOR(i,1,n+1) f[i] = f[i-1] * i % MOD; 
+    return f;
+}
+
+//==Trailing Zeros for n!==
+ll trailingZeros(ll n) {
+    ll z = 0; 
+    for(ll i = 5; i <= n; i*=5) z += n/i; 
+    return z;
+}
+
+//==K-divisible Sum==
+// Sum of n numbers div by k and max elem of arr is min possible
+ll kDivSum(ll n, ll k) {
+	return (n+(k*((n+k-1)/k))-1)/n;
+}
+
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);

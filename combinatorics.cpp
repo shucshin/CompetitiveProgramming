@@ -2,19 +2,26 @@
 using namespace std;
 using ld = long double;
 using ll = long long;
-using vll = vector<ll>;
+using vi = vector<ll>;
 #define endl '\n'
 #define FOR(i,a,b) for(int i = a; i < b; i++)
 const ll MOD = 1e9+7;
 const ll MAXN = 1e6;
 
-vll fac(MAXN), inv(MAXN);
+//==Power of Factorial Divisor==
+// Given n, k. Find largest power of k denoted as x such that n! is divisible by k^x
+ll fact_pow(ll n, ll k) {
+    ll ans = 0;
+    while(n) {n /= k; ans += n;} 
+    return ans;
+}
+
 //==Binary Exponentiation for Modular Multiplicative Inverse==
-ll bcpow(ll a, ll b){ // bcpow(a,MOD-2) :: Modular Inverse of a
+ll bcpow(ll a, ll b, ll m=MOD){ // bcpow(a,MOD-2) :: Modular Inverse of a
     ll r = 1;
     while(b) {
-        if(b&1ll) r = r * a % MOD;
-        a = a * a % MOD; b >>= 1ll;
+        if(b&1ll) r = r * a % m;
+        a = a * a % m; b >>= 1ll;
     } return r;
 }
 
@@ -28,6 +35,7 @@ ll binpow(ll a, ll b) {
 }
 
 //==Calculates Factorials and Inverses==
+vi fac(MAXN), inv(MAXN);
 void facinv() {
     fac[0] = 1; fac[1] = 1;
     FOR(i,2,MAXN) fac[i] = fac[i-1]*i%MOD; 
@@ -38,6 +46,19 @@ void facinv() {
 //==Binomial Coefficient==
 ll nCk(ll n, ll k) {
     return n < k ? 0 : fac[n] * inv[k] % MOD * inv[n-k] % MOD;
+}
+
+//==Catalan Numbers==
+vi catalan(MAXN);
+void catalan_nums() {
+    catalan[0] = catalan[1] = 1;
+    FOR(i,2,n+1) {
+        catalan[i] = 0;
+        FOR(j,0,i) {
+            catalan[i] += (catalan[j]*catalan[i-j-1])%MOD;
+            if (catalan[i] >= MOD) catalan[i] -= MOD;
+        }
+    }
 }
 
 int main() {

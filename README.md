@@ -22,7 +22,7 @@ Repository to update all my Competitive Programming Templates
 1. [Order Statistics Tree](https://github.com/shucshin/CompetitiveProgramming/blob/main/ost.cpp)
 1. [String](https://github.com/shucshin/CompetitiveProgramming/blob/main/string.cpp)
 
-### 1234567890
+### Algebra
 1. [Number Theory](https://github.com/shucshin/CompetitiveProgramming/blob/main/num_theory.cpp)
 1. [Math](https://github.com/shucshin/CompetitiveProgramming/blob/main/math.cpp)
 1. [Combinatorics](https://github.com/shucshin/CompetitiveProgramming/blob/main/combinatorics.cpp)
