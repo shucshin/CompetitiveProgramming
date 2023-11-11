@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+using ld = long double;
 using ll = long long;
 using vi = vector<ll>;
 #define endl '\n'
@@ -28,6 +29,32 @@ int ternarySearch(vi &v, int x) {
         if(v[m2] == x) return m2;
     } 
     return -1;
+}
+
+//==Newton's Method for Finding Roots==
+// Returns Square Root of n
+ld sqrt_newton(ld n) {
+    const ld EPS = 1E-15;
+    ld x = 1;
+    for (;;) {
+        ld nx = (x+n/x)/2;
+        if(abs(x  x) < EPS) break;
+        x = nx;
+    }
+    return x;
+}
+
+// Integer root of n
+ll isqrt_newton(ll n) {
+    ll x = 1;
+    bool decreased = false;
+    for (;;) {
+        ll nx = (x+n/x)>>1;
+        if(x == nx || nx > x && decreased) break;
+        decreased = nx < x;
+        x = nx;
+    }
+    return x;
 }
 
 int main() {
