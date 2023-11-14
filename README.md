@@ -28,11 +28,6 @@ Repository to update all my Competitive Programming Templates
 1. [Combinatorics](https://github.com/shucshin/CompetitiveProgramming/blob/main/combinatorics.cpp)
 
 
-### Implementation
-1. [Implementation](https://github.com/shucshin/CompetitiveProgramming/blob/main/implementation.cpp)
-1. [Bit Implementation](https://github.com/shucshin/CompetitiveProgramming/blob/main/implementation_bit.cpp)
-1. [Binary Search Implementation](https://github.com/shucshin/CompetitiveProgramming/blob/main/implementation_bs.cpp)
-
 ### Dynamic Programming
 1. [Dynamic Programming](https://github.com/shucshin/CompetitiveProgramming/blob/main/DP.cpp)
 
