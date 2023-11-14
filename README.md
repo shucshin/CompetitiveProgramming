@@ -17,16 +17,25 @@ Repository to update all my Competitive Programming Templates
 1. [Subarray](https://github.com/shucshin/CompetitiveProgramming/blob/main/subarray.cpp)
 
 ### Skills
-1. [Binary Search](https://github.com/shucshin/CompetitiveProgramming/blob/main/search.cpp)
+1. [Search](https://github.com/shucshin/CompetitiveProgramming/blob/main/search.cpp)
 1. [Prefix Sum](https://github.com/shucshin/CompetitiveProgramming/blob/main/prefix.cpp)
 1. [Order Statistics Tree](https://github.com/shucshin/CompetitiveProgramming/blob/main/ost.cpp)
 1. [String](https://github.com/shucshin/CompetitiveProgramming/blob/main/string.cpp)
 
 ### Algebra
-1. [Number Theory](https://github.com/shucshin/CompetitiveProgramming/blob/main/num_theory.cpp)
 1. [Math](https://github.com/shucshin/CompetitiveProgramming/blob/main/math.cpp)
 1. [Combinatorics](https://github.com/shucshin/CompetitiveProgramming/blob/main/combinatorics.cpp)
 
+### Number Theory
+1. [Number Theory](https://github.com/shucshin/CompetitiveProgramming/blob/main/num_theory.cpp)
+1. [Binary Exponentiation](https://github.com/shucshin/CompetitiveProgramming/blob/main/binpow.cpp)
+1. [Euclidean Algorithms](https://github.com/shucshin/CompetitiveProgramming/blob/main/euclidean.cpp)
+1. [Linear Diophantine Equation](https://github.com/shucshin/CompetitiveProgramming/blob/main/diophantine.cpp)
+1. [Fibonacci Numberes](https://github.com/shucshin/CompetitiveProgramming/blob/main/fibonacci.cpp)
+1. [Prime Numbers](https://github.com/shucshin/CompetitiveProgramming/blob/main/primes.cpp)
+1. [Euler's Totient Function](https://github.com/shucshin/CompetitiveProgramming/blob/main/phi.cpp)
+1. [Divisors](https://github.com/shucshin/CompetitiveProgramming/blob/main/divisors.cpp)
+1. [Modular Arithmetic](https://github.com/shucshin/CompetitiveProgramming/blob/main/modular.cpp)
 
 ### Dynamic Programming
 1. [Dynamic Programming](https://github.com/shucshin/CompetitiveProgramming/blob/main/DP.cpp)

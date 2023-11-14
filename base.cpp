@@ -44,9 +44,6 @@ string convert_base(string s, ll a, ll b) {
     return from_base10(to_base10(s,a),b);
 }
 
-void solve() {
-    
-}
 
 // g++ A.cpp -o A && ./A < in.txt > out.txt
 int main() {
