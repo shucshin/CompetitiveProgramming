@@ -31,7 +31,7 @@ Repository to update all my Competitive Programming Templates
 1. [Binary Exponentiation](https://github.com/shucshin/CompetitiveProgramming/blob/main/binpow.cpp)
 1. [Euclidean Algorithms](https://github.com/shucshin/CompetitiveProgramming/blob/main/euclidean.cpp)
 1. [Linear Diophantine Equation](https://github.com/shucshin/CompetitiveProgramming/blob/main/diophantine.cpp)
-1. [Fibonacci Numberes](https://github.com/shucshin/CompetitiveProgramming/blob/main/fibonacci.cpp)
+1. [Fibonacci Numbers](https://github.com/shucshin/CompetitiveProgramming/blob/main/fibonacci.cpp)
 1. [Prime Numbers](https://github.com/shucshin/CompetitiveProgramming/blob/main/primes.cpp)
 1. [Euler's Totient Function](https://github.com/shucshin/CompetitiveProgramming/blob/main/phi.cpp)
 1. [Divisors](https://github.com/shucshin/CompetitiveProgramming/blob/main/divisors.cpp)
