@@ -69,15 +69,6 @@ ll bcpow(ll a, ll b, ll m=MOD){ // bcpow(a,MOD-2) :: Modular Inverse of a
     } return r;
 }
 
-//==Binary Exponentiation==
-ll binpow(ll a, ll b) {
-    ll r = 1; 
-    while(b) {
-	if(b & 1ll) r = r * a; 
-	a = a * a; b >>= 1ll;
-    } return r;
-}
-
 //==Calculates Factorials and Inverses==
 vi fac(MXN), inv(MXN);
 void facinv() {
@@ -88,6 +79,13 @@ void facinv() {
 } 
 
 //==Binomial Coefficient==
+ll nCk(ll n, ll k) {
+    ld r = 1; 
+    rep(i,1,k+1) r = r * (n-k+i)/i; 
+    return (ll)(r+0.01);
+}
+
+//==Binomial Coefficient w/ MOD==
 ll nCk(ll n, ll k) {
     return n < k ? 0 : fac[n] * inv[k] % MOD * inv[n-k] % MOD;
 }

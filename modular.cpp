@@ -33,7 +33,7 @@ ll inv(ll a) {
 //==Modular Inverse Precomputation from 1 to m-1
 vi inverses(ll m) {
     vi inv(m); inv[1] = 1;
-    FOR(a,2,m) {inv[a] = m-(ll)(m/a)*inv[m%a]%m;}
+    FOR(a,2,m) {inv[a] = MOD-(ll)(MOD/a)*inv[MOD%a]%MOD;}
     return inv;
 }
 
@@ -66,8 +66,13 @@ vi invs(vi &A, ll m) {
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-    
-
-    
+    vi A = {1,2,3,4,5,6,7,8,9,10};
+    vi B = invs(A,MOD);
+    for(auto a : B) cout << a << " "; cout << endl;
+    vi C = inverses(11);
+    for(auto a : C) cout << a << " "; cout << endl;
+    FOR(i,1,11) {
+        cout << inv(i) << " ";
+    } cout << endl;
     return 0;
 }
