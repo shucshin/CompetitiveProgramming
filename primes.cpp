@@ -26,20 +26,6 @@ vi primes(ll n) {
 	return q;
 }
 
-//==Linear Sieve==
-// returns minimum prime factor lp[i]
-vi linear_sieve(ll n) {
-    vi lp(n+1), pr; 
-    for(ll i=2; i <= n; i++) {
-        if(lp[i]==0) {lp[i]=i; pr.pb(i);}
-        for(ll j=0; i*pr[j] <= n; j++) {
-            lp[i*pr[j]] = pr[j];
-            if(pr[j]==lp[i]) break;
-        }
-    }
-    return lp;
-}
-
 //==Check if n is prime==
 bool isPrime(ll n) {
     if(n <= 1) return 0;
@@ -72,6 +58,28 @@ bool is_prime_fermat(ll n, ll m=5) {
 //==Check if a^2-b^2 is prime==
 bool isDiffPrime(ll a, ll b) {
     return (isPrime(a+b) && a-b==1) ? 1 : 0;
+}
+
+//==Minimum Prime Factor of N==
+ll least_prime_factor(ll n) {
+    if(n%2==0) return 2;
+    for(ll i = 3; i*i <= n; i+=2) {
+        if(n%i==0) return i;
+    } return n;
+}
+
+//==Linear Sieve (Minimum Prime Factors)==
+// lp[i] = Minimum Prime Factor of i
+vi linear_sieve(ll n) {
+    vi lp(n+1), pr; 
+    for(ll i=2; i <= n; i++) {
+        if(lp[i]==0) {lp[i]=i; pr.pb(i);}
+        for(ll j=0; i*pr[j] <= n; j++) {
+            lp[i*pr[j]] = pr[j];
+            if(pr[j]==lp[i]) break;
+        }
+    }
+    return lp;
 }
 
 //==Prime Factors of N==
