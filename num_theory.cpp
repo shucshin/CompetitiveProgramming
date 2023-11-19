@@ -32,6 +32,16 @@ ostream&operator<<(ostream& dest, __int128_t value){
     return dest;
 } 
 
+// Last number reachable as multiple of k in 1~n
+ll multipleK(ll n, ll k) {
+    return n/k*k;
+}
+
+vi factorials(ll n) {
+    vi f(n+1,1);
+    FOR(i,1,n+1) f[i] = f[i-1]*i%MOD;
+    return f;
+}
 
 
 // g++ A.cpp -o A && ./A < input.txt
