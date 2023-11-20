@@ -93,6 +93,13 @@ ll kDivSum(ll n, ll k) {
 	return (n+(k*((n+k-1)/k))-1)/n;
 }
 
+// Partition x into x1,...,xk so that all of them <= y
+// e.g. x=12 y=5 => x={4,4,4}. x=11 y=5 => x={3,4,4}
+tuple<ll,ll,ll> partition(ll x, ll y) { // elems, operations, maximized min
+    ll a = (x+y-1)/y; // ceil(x/y);
+    return {a,a-1,x/a};
+}
+
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
     //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
