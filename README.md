@@ -6,20 +6,20 @@ Repository to update all my Competitive Programming Templates
 1. [Template](https://github.com/shucshin/CompetitiveProgramming/blob/main/tem.cpp)
 
 ### Ad-hoc
-1. [Bitmask](https://github.com/shucshin/CompetitiveProgramming/blob/main/bitmask.cpp)
 1. [Base](https://github.com/shucshin/CompetitiveProgramming/blob/main/base.cpp)
 1. [Postfix](https://github.com/shucshin/CompetitiveProgramming/blob/main/postfix.cpp)
 1. [8 Queens](https://github.com/shucshin/CompetitiveProgramming/blob/main/queens.cpp)
 
-### ABCD
-1. [Swaps](https://github.com/shucshin/CompetitiveProgramming/blob/main/swaps.cpp)
+### Implementation
+1. [Inversion](https://github.com/shucshin/CompetitiveProgramming/blob/main/inversion.cpp)
 1. [Pairs](https://github.com/shucshin/CompetitiveProgramming/blob/main/pairs.cpp)
 1. [Subarray](https://github.com/shucshin/CompetitiveProgramming/blob/main/subarray.cpp)
 
-### Skills
+### Technical Methods
+1. [Bitmask](https://github.com/shucshin/CompetitiveProgramming/blob/main/bitmask.cpp)
+1. [Order Statistics Tree](https://github.com/shucshin/CompetitiveProgramming/blob/main/ost.cpp)
 1. [Search](https://github.com/shucshin/CompetitiveProgramming/blob/main/search.cpp)
 1. [Prefix Sum](https://github.com/shucshin/CompetitiveProgramming/blob/main/prefix.cpp)
-1. [Order Statistics Tree](https://github.com/shucshin/CompetitiveProgramming/blob/main/ost.cpp)
 1. [String](https://github.com/shucshin/CompetitiveProgramming/blob/main/string.cpp)
 
 ### Algebra
