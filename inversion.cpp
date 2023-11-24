@@ -4,6 +4,9 @@ using ll = long long;
 using vi = vector<ll>;
 using pi = pair<ll,ll>;
 #define endl '\n'
+#define fst first
+#define snd second
+#define pb push_back
 #define FOR(i,a,b) for(int i = (a); i < (b); i++)
 #define all(a) (a).begin(), (a).end()
 #define lb(v,a) lower_bound(v.begin(),v.end(),a)-v.begin()
@@ -38,18 +41,18 @@ ll inversionCount(vi &v) {
 }
 
 //==Inversion Index==
-struct comparepq {bool operator() (pi a, pi b) {return a.first > b.first;}};
-int inversionIndex(vi v) { 
-    if(v.size() <= 1) return 0;
+struct comparepq {bool operator() (pi a, pi b) {return a.fst > b.fst;}};
+int inversionIndex(vi &A) { 
+    if(A.size() <= 1) return 0;
     /*==Ascending==
-    struct comparepq {bool operator() (pi a, pi b) {return a.first > b.first;}};
+    struct comparepq {bool operator() (pi a, pi b) {return a.fst > b.fst;}};
     priority_queue<pi, vector<pi>, comparepq > pq; */
     priority_queue<pi> pq;
-    FOR(i,0,v.size()) {pq.push({v[i],i});} v.clear(); int ans = 0;
+    FOR(i,0,A.size()) {pq.push({A[i],i});} A.clear(); int ans = 0;
     while(!pq.empty()) {
         pi p = pq.top(); pq.pop();
-        int y = lb(v,p.second); ans += p.second - y;
-        v.insert(lower_bound(all(v),p.second),p.second);
+        int y = lb(A,p.snd); ans += p.snd - y;
+        A.insert(lower_bound(all(A),p.snd),p.snd);
     } return ans;
 }
 
@@ -108,7 +111,17 @@ ll inversions(string &s, ll N=1) { // string s repeats N times
     return inv;
 }
 
-//==Same as above but optimized==
+//==Num of inversions when only 0's and 1's==
+ll inversions01(vi &A) {
+    ll inv = 0, k = 0, n = A.size();
+    FOR(i,0,n) {
+        if(A[i] == 1) k++;
+        else inv += k;
+    }
+    return inv;
+}
+
+//==Num of inversions that works only on alphabets==
 ll inversionsA(string &s, ll N=1) { // string s repeats N times
     vi cnt(26,0); ll inv = 0, n = s.length(); N%=MOD;
     FOR(i,0,n) {

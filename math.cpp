@@ -88,7 +88,7 @@ ll trailingZeros(ll n) {
 }
 
 //==K-divisible Sum==
-// Sum of n numbers div by k and max elem of arr is min possible
+// Minimize the max element of n numbers that sum to be a multiple of k
 ll kDivSum(ll n, ll k) {
 	return (n+(k*((n+k-1)/k))-1)/n;
 }
