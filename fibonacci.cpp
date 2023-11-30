@@ -16,6 +16,16 @@ using pi = pair<ll,ll>;
 const ll MOD = 1e9+7;
 const ll INF = 1e9;
 
+vi f(90);
+
+//==Fibonacci Pre-process==
+void fibonacci(ll n=90) {
+    f[0] = 0, f[1] = 1;
+    FOR(i,2,n) {
+        f[i] = f[i-1]+f[i-2];
+    }
+}
+
 //==N-th Fibonacci==
 ll fib(ll n) {
     ll a = 0, b = 1;
@@ -31,7 +41,7 @@ pi fibs(ll n) {
     if(n == 0) return {0, 1};
     auto p = fibs(n >> 1);
     ll c = p.fst * (2*p.snd-p.fst);
-    ll d = p.fst * p.fst+p.snd*p.snd;
+    ll d = p.fst*p.fst + p.snd*p.snd;
     if(n & 1) return {d, c+d};
     else return {c, d};
 }
@@ -45,5 +55,6 @@ int main() {
     pi p = fibs(15);
     cout << p.fst << " " << p.snd << endl;
 
+    fibonacci(); FOR(i,0,90) cout << i << ":" << f[i] << endl;
     return 0;
 }
