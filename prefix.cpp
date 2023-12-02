@@ -8,10 +8,17 @@ using pi = pair<ll,ll>;
 
 //==Prefix Sum==
 vi prefixSum(vi &A) {
-    int n = A.size(); vi pfx(n+1,0);
-    FOR(i,1,n+1) {pfx[i] = pfx[i-1] + A[i-1];}
+    int n = A.size(); vi pfx(n+1);
+    FOR(i,1,n+1) pfx[i] = pfx[i-1] + A[i-1];
     return pfx;
 } // Sum A[3,5] is pfx[5]-pfx[3-1]
+
+//==Suffix Sum==
+vi suffixSum(vi &A) {
+    int n = A.size(); vi sfx(n+1);
+    RFOR(i,0,n) sfx[i] = sfx[i+1] + A[i];
+    return sfx;
+} // Sum A[2,3] is sfx[2-1]-sfx[3]
 
 //==Max, Min Subarray Sum== 
 pi kadane(vi &pfx) {
