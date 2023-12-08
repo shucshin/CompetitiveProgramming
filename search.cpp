@@ -59,7 +59,21 @@ ll isqrt_newton(ll n) {
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
+    
+    //==Binary Search the Answer==
+    ll l = 0, r = INF, ans = -1;
+    while(l <= r) {
+        ll m = l+(r-l)/2;
+        check(m) ? (l = m+1, ans = m) : r = m-1;
+    } cout << ans << endl;
 
+    
+    //==Binary Search the Answer w/ Float==
+    ld l = 0, r = INF;
+    FOR(_,0,50) {
+        ld m = l+(r-l)/2.0;
+        check(m) ? l = m : r = m;
+    } printf("%0.6Lf\n",l);
 
     return 0;
 }
