@@ -19,7 +19,7 @@ const ll INF = 1e9;
 
 //==Divisors of N==
 vi divisors(ll n) {
-	vi d; d.pb(1); d.pb(n); 
+	vi d; d.pb(1); if(n != 1) d.pb(n); 
 	for(ll i=2; i*i<=n; i++) {
 		if(n% i==0) i*i==n ? d.pb(i) : (d.pb(i), d.pb(n/i));} 
 	return d;

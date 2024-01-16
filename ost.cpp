@@ -1,6 +1,8 @@
 // Order Statistics Tree
 #include <bits/stdc++.h> 
 #include <bits/extc++.h>  // pbds
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
 using namespace __gnu_pbds;
 using ll = long long;
@@ -37,6 +39,10 @@ int main() {
     cout << tree.ok(2) << endl;     // index 0 (rank 1)
     cout << tree.ok(71) << endl;    // index 8 (rank 9)
     cout << tree.ok(15) << endl;    // index 4 (rank 5)
+    // Erase an elem
+    tree.erase(10);                      // delete 10 if it exists
+    tree.erase(*tree.fo(0));             // del smallest elem
+    tree.erase(*tree.fo(tree.size()-1)); // del biggest elem
     
     return 0;
 }

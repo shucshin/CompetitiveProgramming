@@ -37,6 +37,19 @@ ll multipleK(ll n, ll k) {
     return n/k*k;
 }
 
+// a, b are the largest two divisors before x, find x
+ll two_divisors(ll a, ll b) {
+    if(b%a==0) return b*(b/a);
+    return b*a/gcd(a,b);
+}
+
+// Check if n is a Square Num
+bool isSquare(ll n) {
+    if(n <= 0) return false;
+    ll x = sqrt(n);
+    return x*x==n;
+}
+
 vi factorials(ll n) {
     vi f(n+1,1);
     FOR(i,1,n+1) f[i] = f[i-1]*i%MOD;

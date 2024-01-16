@@ -5,7 +5,7 @@ A
 _A.cpp
 A.cpp
 B.cpp
-_ChallengingHikeSUBREGIONAL.cpp
+_*.cpp
 ChessKattis.cpp
 *.java
 TrainingCamp*.cpp
