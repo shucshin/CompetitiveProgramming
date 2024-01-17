@@ -18,6 +18,14 @@ const ll INF = 1e9;
 ll gcd(ll a, ll b) {return b?gcd(b,a%b):a;}
 ll lcm(ll a, ll b) {return (a/gcd(a,b))*b;}
 
+//==cin >> __int128==
+istream& operator >> (istream& in, __int128& v) {
+    string s; in >> s; v = 0;
+    for(auto &it:s) if(isdigit(it)) v=v*10+it-'0';
+    if(s[0]=='-') v*=-1;
+    return in;
+}
+
 //==cout << __int128==
 ostream&operator<<(ostream& dest, __int128_t value){
     ostream::sentry s(dest);
@@ -48,6 +56,12 @@ bool isSquare(ll n) {
     if(n <= 0) return false;
     ll x = sqrt(n);
     return x*x==n;
+}
+
+// Check if n is a power of 2
+bool isPowerTwo(ll n) {
+    if(!n) return false;
+    return (ceil(log2(n)) == floor(log2(n)));
 }
 
 vi factorials(ll n) {
