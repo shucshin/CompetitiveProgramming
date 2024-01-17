@@ -14,7 +14,7 @@ using vi = vector<ll>;
 #define rnth(A,k) nth_element(A.begin(),A.begin()+k,v.end(), greater<ll>())
 #define fo(a) find_by_order(a)
 #define ok(a) order_of_key(a)
-using ost = tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>;
+template<class T> using ost = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 int main() {
     vi v = {10,2,7,4,39,4,8,1,5,3,35}; int n = v.size();
@@ -30,7 +30,7 @@ int main() {
 
 
     vi A = {71,15,65,23,10,2,7,50,4}; n = A.size();
-    ost tree; FOR(i,0,n) tree.insert(A[i]);
+    ost<ll> tree; FOR(i,0,n) tree.insert(A[i]);
     // O(log n) select
     cout << *tree.fo(0) << endl;    // smallest = 2
     cout << *tree.fo(n-1) << endl;  // largest = 71
