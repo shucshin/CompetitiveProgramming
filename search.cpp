@@ -70,10 +70,10 @@ int main() {
     
     //==Binary Search the Answer w/ Float==
     ld l = 0, r = INF;
-    FOR(_,0,50) {
+    FOR(_,0,100) {
         ld m = l+(r-l)/2.0;
         check(m) ? l = m : r = m;
-    } printf("%0.6Lf\n",l);
+    } printf("%0.7Lf\n",l);
 
     return 0;
 }
