@@ -38,11 +38,11 @@ tuple<ll,int,int> minSubarray(vi &v) {
 }
 
 //==Subarray Sum Equals K==
-int subarraySum(vi &v, int k) {
-    unordered_map<int,int> m;
-    int ans = 0, cur = 0;
-    FOR(i,0,v.size()) {
-        cur += v[i];
+ll subarraySum(vi &A, ll k) {
+    map<ll,ll> m;
+    ll ans = 0, cur = 0;
+    FOR(i,0,A.size()) {
+        cur += A[i];
         if(cur == k) ans++;
         if(m.count(cur-k)) ans += m[cur-k];
         m[cur]++;
