@@ -60,6 +60,7 @@ vector<set<seg>::iterator> where;
 set<seg>::iterator prev(set<seg>::iterator it) {return it == s.begin() ? s.end() : --it;}
 set<seg>::iterator next(set<seg>::iterator it) {return ++it;}
 
+// Search pair of intersecting segments
 pair<ll,ll> solve(const vector<seg> &a) {
     int n = a.size(); vector<event> e;
     //FOR(i,0,n) {
