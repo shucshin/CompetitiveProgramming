@@ -59,6 +59,34 @@ struct segtree{
     }
 };
 
+//function to find the K-th One on the array
+vi st; int n;
+int findKtone(int k, int v, int tl, int tr){
+            if (k > st[v])return -1;
+            if( tl == tr){return tl;}
+            int mid = (tl + tr) / 2;
+            int leftsub = st[2*v];
+            if(leftsub >= k){
+                return findKtone(k,2*v,tl,mid); 
+            } else {
+                return findKtone(k-leftsub,2*v+1,mid+1,tr); 
+            }
+        }
+
+
+//Function to get the first element at least X, or above X
+int get_first(int v, int tl, int tr, int l, int r, int x) {
+        if(tl > r || tr < l) return -1;
+        if(st[v] <= x) return -1;
+        if (tl== tr) return tl;
+        int tm = tl + (tr-tl)/2;
+        int left = get_first(2*v, tl, tm, l, r, x);
+        if(left != -1) return left;
+        return get_first(2*v+1, tm+1, tr, l ,r, x);
+        }
+        int get_first(int x, int l, int r){
+            return get_first(1,0,n-1, l,r,x);
+        }
 
 // g++ A.cpp -o A && ./A < in.txt > out.txt
 int main() {

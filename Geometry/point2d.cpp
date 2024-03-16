@@ -68,6 +68,14 @@ ftype dot(point2d a, point2d b) {
     return a.x * b.x + a.y * b.y;
 }
 
+//===Cross Product== 
+/* Cross Product, know if two lines are parallel example
+   if you have ABCD points, check if AB parallel CD
+   (B-A).x*(D-C).y-(B-A).y*(D-C).x == 0 , which is cross of (B-A),(D-C)*/
+ftype cross(point2d a, point2d b){
+    return (a.x*b.y)-(a.y*b.x);
+}
+
 //==Norm of a (squared length)== |a|^2 = a*a
 ftype norm(point2d a) {
     return dot(a, a);
