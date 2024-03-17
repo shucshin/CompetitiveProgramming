@@ -20,84 +20,47 @@ const ll MXN = 2e5+5;
 const ll INF = 1e18;
 const ld EPS = 1e-12;
 
-struct point3d {
+struct pt {
     ftype x, y, z;
-    point3d() {}
-    point3d(ftype x, ftype y, ftype z): x(x), y(y), z(z) {}
-    point3d& operator+=(const point3d &t) {
-        x += t.x;
-        y += t.y;
-        z += t.z;
-        return *this;
-    }
-    point3d& operator-=(const point3d &t) {
-        x -= t.x;
-        y -= t.y;
-        z -= t.z;
-        return *this;
-    }
-    point3d& operator*=(ftype t) {
-        x *= t;
-        y *= t;
-        z *= t;
-        return *this;
-    }
-    point3d& operator/=(ftype t) {
-        x /= t;
-        y /= t;
-        z /= t;
-        return *this;
-    }
-    point3d operator+(const point3d &t) const {
-        return point3d(*this) += t;
-    }
-    point3d operator-(const point3d &t) const {
-        return point3d(*this) -= t;
-    }
-    point3d operator*(ftype t) const {
-        return point3d(*this) *= t;
-    }
-    point3d operator/(ftype t) const {
-        return point3d(*this) /= t;
-    }
-};
-point3d operator*(ftype a, point3d b) {
-    return b * a;
-}
+    pt() {}
+    pt(ftype x, ftype y, ftype z): x(x), y(y), z(z) {}
+    pt& operator+=(const pt &t) {x += t.x; y += t.y; z += t.z; return *this;}
+    pt& operator-=(const pt &t) {x -= t.x; y -= t.y; z -= t.z; return *this;}
+    pt& operator*=(ftype t) {x *= t; y *= t; z *= t; return *this;}
+    pt& operator/=(ftype t) {x /= t; y /= t; z /= t; return *this;}
+    pt operator+(const pt &t) const {return pt(*this) += t;}
+    pt operator-(const pt &t) const {return pt(*this) -= t;}
+    pt operator*(ftype t) const {return pt(*this) *= t;}
+    pt operator/(ftype t) const {return pt(*this) /= t;}
+};  pt operator*(ftype a, pt b) {return b * a;}
 
 //==Dot Product== 
 /* Product of the length of the first vector by the length of the 
    projection of the second vector onto the first one */
-ftype dot(point3d a, point3d b) {
-    return a.x * b.x + a.y * b.y + a.z * b.z;
-}
+ftype dot(pt a, pt b) {return a.x * b.x + a.y * b.y + a.z * b.z;}
 
 //==Cross Product==
-point3d cross(point3d a, point3d b) {
-    return point3d(a.y * b.z - a.z * b.y,
-                   a.z * b.x - a.x * b.z,
-                   a.x * b.y - a.y * b.x);
+pt cross(pt a, pt b) {
+    return pt(a.y * b.z - a.z * b.y,
+              a.z * b.x - a.x * b.z,
+              a.x * b.y - a.y * b.x);
 }
-ftype triple(point3d a, point3d b, point3d c) {
-    return dot(a, cross(b, c));
-}
+
+ftype triple(pt a, pt b, pt c) {return dot(a, cross(b, c));}
 
 //==Planes Intersection==
-point3d intersect(point3d a1, point3d n1, point3d a2, point3d n2, point3d a3, point3d n3) {
-    point3d x(n1.x, n2.x, n3.x);
-    point3d y(n1.y, n2.y, n3.y);
-    point3d z(n1.z, n2.z, n3.z); 
-    point3d d(dot(a1, n1), dot(a2, n2), dot(a3, n3));
-    return point3d(triple(d, y, z),
-                   triple(x, d, z),
-                   triple(x, y, d)) / triple(n1, n2, n3);
+pt intersect(pt a1, pt n1, pt a2, pt n2, pt a3, pt n3) {
+    pt x(n1.x, n2.x, n3.x);
+    pt y(n1.y, n2.y, n3.y);
+    pt z(n1.z, n2.z, n3.z); 
+    pt d(dot(a1, n1), dot(a2, n2), dot(a3, n3));
+    return pt(triple(d, y, z),
+              triple(x, d, z),
+              triple(x, y, d)) / triple(n1, n2, n3);
 }
 
-// g++ A.cpp -o A && ./A < in.txt > out.txt
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-    
     
     return 0;
 }

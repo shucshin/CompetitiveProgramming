@@ -60,83 +60,9 @@ ll subarraySumOdd(vi &A) {
     return ans;
 }
 
-// ==Longest Substring without Repeating Chars==
-int LSWRC(string &s) {
-    set<char> alphabet;
-    int ans = 0, l = 0;
-    for(int i = 0; i < s.length(); i++) {
-        while(alphabet.count(s[i])) {
-            alphabet.erase(s[l]); l++;
-        }
-        alphabet.insert(s[i]);
-        ans = max(ans, i-l+1);
-    }
-    return ans;
-}
-        
-// ==Longest Substring without repeating chars==
-string LSWRChar(string &s) {
-    int l=0, r=0, i=0, j=0, m=0;
-    unordered_set<char> a;
-    while(r < s.size()) {
-        if(a.find(s[r]) == a.end()) {
-            a.insert(s[r]);
-            if(r-l+1 > m) {m = r-l+1; i = l; j = r;}
-            r++;
-        } else {a.erase(s[l]); l++;}
-    }
-    return s.substr(i,m);
-}
-
-//==Longest Substring with K unique chars==
-string LKS(string &s, int k) {
-    int i=0, j=0, ans=-1;
-    unordered_map<char,int> m;
-    while(j < s.size()) {
-        m[s[j]]++;
-        while(m.size() > k) {
-            m[s[i]]--;
-            if(!m[s[i]]) m.erase(s[i]);
-            i++;
-        }
-        if(m.size()==k) ans=max(ans,j-i+1);
-        j++;}
-    return s.substr(i,ans);
-}
-
-//==Minimum substring of s that contains all chars of t==
-string minWindow(string s, string t) {
-    vi m(256,0);
-    int a=0, b=INT_MAX, c=0, i=0, j=0;
-    FOR(i,0,t.length()) {if(!m[t[i]]) c++; m[t[i]]++;}
-    while(j < s.length()) {
-        m[s[j]]--;
-        if(!m[s[j]]) c--;
-        while(!c) {
-            if(b > j-i+1) {a = i; b = min(b,j-i+1);}
-            m[s[i]]++;
-            if(m[s[i]] > 0) c++;
-            i++;
-        }
-        j++;
-    }
-    return (b != INT_MAX) ? s.substr(a,b) : "-1";
-}
-
-
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-
-    string s1 = "erogijaerogjeraoig", s2 = "gao";
-    cout << minWindow(s1,s2) << endl;
-
-    s1 = "GEEKSFORGEEKS";
-    cout << LSWRC(s1) << endl;
-
-    //s1 = "aabacbebebe";
-    cout << LKS(s1,3) << endl;
 
     return 0;
 }

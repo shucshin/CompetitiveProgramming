@@ -76,20 +76,8 @@ ll pairsLowerUpper(int k, string s) {
     return ans;
 }
 
-//==Number of pairs that can matrix multiply==
-// FOR(i,0,n) {cin >> A[i] >> a; m[a]++;}
-ll pairMatrixMul(vi &A) {
-    map<ll,ll> m; int n = A.size();
-    ll ans = 0;
-    FOR(i,0,n) {
-        if(m.count(A[i])) ans += m[A[i]];
-    }
-    return ans;
-}
-
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
     vi A = {1,2,3,4,5};
     cout << divisible_pairs(A) << endl;
 

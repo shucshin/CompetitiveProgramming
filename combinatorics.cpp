@@ -18,7 +18,6 @@ const ll INF = 1e18;
 const ll MXN = 2e6+5;
 const ll MXC = 1e4+5;
 
-
 //==Legendre's Formula==
 // Max power of prime number p that can divide n!
 ll prime_pow(ll n, ll p) {
@@ -58,7 +57,6 @@ ll composite_pow(ll n, ll k) {
     }
     return x;
 }
-
 
 //==Binary Exponentiation for Modular Multiplicative Inverse==
 ll bcpow(ll a, ll b, ll m=MOD){ // bcpow(a,MOD-2) :: Modular Inverse of a
@@ -109,12 +107,9 @@ int main() {
     cout << composite_pow(146,15) << endl; // 35
     cout << pow_fact(146,15) << endl;
 
-    FOR(i,1,15) {
-        cout << fac[i] << " " << inv[i] << endl;
-    }
+    FOR(i,1,15) {cout << fac[i] << " " << inv[i] << endl;}
     
     FOR(i,0,15) cout << catalan[i] << " "; cout << endl;
-
 
     return 0;
 }

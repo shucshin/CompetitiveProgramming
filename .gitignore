@@ -2,15 +2,11 @@
 .vscode
 *.txt
 A
-_A.cpp
 A.cpp
 B.cpp
 _*.cpp
-ChessKattis.cpp
 *.java
-TrainingCamp*.cpp
-cp4_basic_string.cpp
-implementation*.cpp
+math_implementation.cpp
 
 # Compiled Object files
 *.slo

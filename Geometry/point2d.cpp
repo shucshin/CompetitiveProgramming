@@ -9,6 +9,7 @@ using pi = pair<ll,ll>;
 #define fst first
 #define snd second
 #define pb push_back
+#define sq(a) (a)*(a)
 #define FOR(i,a,b) for(int i = (a); i < (b); i++)
 #define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
 #define all(a) (a).begin(), (a).end()
@@ -20,99 +21,65 @@ const ll MXN = 2e5+5;
 const ll INF = 1e18;
 const ld EPS = 1e-12;
 
-struct point2d {
+struct pt {
     ftype x, y;
-    point2d() {}
-    point2d(ftype x, ftype y): x(x), y(y) {}
-    point2d& operator+=(const point2d &t) {
-        x += t.x;
-        y += t.y;
-        return *this;
-    }
-    point2d& operator-=(const point2d &t) {
-        x -= t.x;
-        y -= t.y;
-        return *this;
-    }
-    point2d& operator*=(ftype t) {
-        x *= t;
-        y *= t;
-        return *this;
-    }
-    point2d& operator/=(ftype t) {
-        x /= t;
-        y /= t;
-        return *this;
-    }
-    point2d operator+(const point2d &t) const {
-        return point2d(*this) += t;
-    }
-    point2d operator-(const point2d &t) const {
-        return point2d(*this) -= t;
-    }
-    point2d operator*(ftype t) const {
-        return point2d(*this) *= t;
-    }
-    point2d operator/(ftype t) const {
-        return point2d(*this) /= t;
-    }
-};
-point2d operator*(ftype a, point2d b) {
-    return b * a;
-}
+    pt() {}
+    pt(ftype x, ftype y): x(x), y(y) {}
+    pt& operator+=(const pt &t) {x += t.x; y += t.y; return *this;}
+    pt& operator-=(const pt &t) {x -= t.x; y -= t.y; return *this;}
+    pt& operator*=(ftype t) {x *= t; y *= t; return *this;}
+    pt& operator/=(ftype t) {x /= t; y /= t; return *this;}
+    pt operator+(const pt &t) const {return pt(*this) += t;}
+    pt operator-(const pt &t) const {return pt(*this) -= t;}
+    pt operator*(ftype t) const {return pt(*this) *= t;}
+    pt operator/(ftype t) const {return pt(*this) /= t;}
+};  pt operator*(ftype a, pt b) {return b * a;}
 
 //==Dot Product== 
 /* Product of the length of the first vector by the length of the 
    projection of the second vector onto the first one */
-ftype dot(point2d a, point2d b) {
-    return a.x * b.x + a.y * b.y;
-}
+ftype dot(pt a, pt b) {return a.x * b.x + a.y * b.y;}
 
 //===Cross Product== 
 /* Cross Product, know if two lines are parallel example
    if you have ABCD points, check if AB parallel CD
    (B-A).x*(D-C).y-(B-A).y*(D-C).x == 0 , which is cross of (B-A),(D-C)*/
-ftype cross(point2d a, point2d b){
-    return (a.x*b.y)-(a.y*b.x);
-}
+ftype cross(pt a, pt b){return (a.x * b.y)-(a.y * b.x);}
 
 //==Norm of a (squared length)== |a|^2 = a*a
-ftype norm(point2d a) {
-    return dot(a, a);
-}
+ftype norm(pt a) {return dot(a, a);}
 
 //==Length of a: |a| = sqrt(a*a)==
-double abs(point2d a) {
-    return sqrt(norm(a));
-}
+double abs(pt a) {return sqrt(norm(a));}
 
 //==Projection of a onto b: (a*b)/|b|==
-double proj(point2d a, point2d b) {
-    return dot(a, b) / abs(b);
-}
+double proj(pt a, pt b) {return dot(a, b) / abs(b);}
 
 //==Angle between vectors: arccos((a*b)/(|a|*|b|))==
-double angle(point2d a, point2d b) {
-    return acos(dot(a, b) / abs(a) / abs(b));
-}
-
-//==Cross Product==
-ftype cross(point2d a, point2d b) {
-    return a.x * b.y - a.y * b.x;
-}
+// pt A, B, C; a = B-A, b = B-C; B is midpoint
+ld angle(point2d a, point2d b) {return acos(dot(a, b) / abs(a) / abs(b));}
 
 //==Line Intersection==
 /* a initial point
    d direction */
-point2d intersect(point2d a1, point2d d1, point2d a2, point2d d2) {
-    return a1 + cross(a2 - a1, d2) / cross(d1, d2) * d1;
+pt intersect(pt a1, pt d1, pt a2, pt d2) {return a1 + cross(a2 - a1, d2) / cross(d1, d2) * d1;}
+
+//==Length between 2 points==
+ld length(point2d a, point2d b) {return sqrt(sq(a.x-b.x)+sq(a.y-b.y));}
+
+//==ABC angle==
+ld angulo(point2d a, point2d b, point2d c) {
+    return acos((sq(length(b,a))*sq(length(b,c))*sq(length(a,c)))/(2*length(a,b)*length(b,c)));
 }
 
-// g++ A.cpp -o A && ./A < in.txt > out.txt
+//==Line Slope==
+ld pendiente(point2d a, point2d b) {
+    if(b.x-a.x == 0) return INF;
+    return ((b.y-a.y)/(b.x-a.x));
+}
+
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
-    
-    
+
     return 0;
 }

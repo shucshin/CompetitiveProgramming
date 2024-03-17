@@ -142,7 +142,6 @@ ll inversionsA(string &s, ll N=1) { // string s repeats N times
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    //freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
     vi A = {8,2,3,4,6,5,1,7};
     cout << "Inversion Index" << inversionIndex(A) << endl;
     cout << "Inversion Count with Merge Sort: " << inversionCount(A) << endl;
