@@ -20,6 +20,7 @@ const ll MOD = 1e9+7; // 998244353
 const ll MXN = 2e5+5;
 const ll INF = 1e18;
 const ld EPS = 1e-12;
+const ld PI = 3.1415926535897932384626433832795028841971; // acos(-1);
 
 struct pt {
     ftype x, y;
@@ -57,29 +58,36 @@ double proj(pt a, pt b) {return dot(a, b) / abs(b);}
 
 //==Angle between vectors: arccos((a*b)/(|a|*|b|))==
 // pt A, B, C; a = B-A, b = B-C; B is midpoint
-ld angle(point2d a, point2d b) {return acos(dot(a, b) / abs(a) / abs(b));}
+ld angle(pt a, pt b) {return acos(dot(a, b) / abs(a) / abs(b));}
 
 //==Line Intersection==
 /* a initial point
    d direction */
 pt intersect(pt a1, pt d1, pt a2, pt d2) {return a1 + cross(a2 - a1, d2) / cross(d1, d2) * d1;}
 
-//==Length between 2 points==
-ld length(point2d a, point2d b) {return sqrt(sq(a.x-b.x)+sq(a.y-b.y));}
+//==Distance from a to b==
+ld length(pt a, pt b) {return sqrt(sq(a.x-b.x)+sq(a.y-b.y));}
 
 //==ABC angle==
-ld angulo(point2d a, point2d b, point2d c) {
+ld angulo(pt a, pt b, pt c) {
     return acos((sq(length(b,a))*sq(length(b,c))*sq(length(a,c)))/(2*length(a,b)*length(b,c)));
 }
 
-//==Line Slope==
-ld pendiente(point2d a, point2d b) {
+/*==Line Slope (Pendiente)==
+  y = mx + b
+  m = (y2-y1)/(x2-x1)
+  Parallel      = (m1 == m2)
+  Perpendicular = (m1*m2 == -1) */
+ld slope(pt a, pt b) {
     if(b.x-a.x == 0) return INF;
     return ((b.y-a.y)/(b.x-a.x));
 }
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    
+    // Set to 10 decimal digits
+    cout << fixed << setprecision(10) << ld(10.123456789101112131415) << endl;
 
     return 0;
 }
