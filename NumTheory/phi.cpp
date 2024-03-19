@@ -1,20 +1,4 @@
 // Euler's Totient Function (Phi-Function)
-#include <bits/stdc++.h>
-using namespace std;
-using lli = __int128;
-using ll = long long; // %lld
-using ld = long double; // %0.5Lf
-using vi = vector<ll>;
-using pi = pair<ll,ll>;
-#define endl '\n'
-#define fst first
-#define snd second
-#define pb push_back
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-#define all(a) (a).begin(), (a).end()
-const ll MOD = 1e9+7;
-const ll INF = 1e9;
 
 //==Phi Function (Euler's Totient Function)==
 /* Counts number of ints [1,n] that are coprime to n
@@ -51,14 +35,4 @@ vi phi_1_to_n(ll n) {
         for(ll j = 2*i; j <= n; j+=i) phi[j] -= phi[i];
     }
     return phi;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    cout << phi(13) << endl; // 12
-    vi A = phi_n(21), B = phi_1_to_n(21);
-    FOR(i,1,22) cout << A[i] << " "; cout << endl;
-    FOR(i,1,22) cout << B[i] << " "; cout << endl;
-
-    return 0;
 }

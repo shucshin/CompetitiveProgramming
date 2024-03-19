@@ -1,21 +1,4 @@
 // Divisors
-#include <bits/stdc++.h>
-using namespace std;
-using lli = __int128;
-using ll = long long; // %lld
-using ld = long double; // %0.5Lf
-using vi = vector<ll>;
-using pi = pair<ll,ll>;
-#define endl '\n'
-#define fst first
-#define snd second
-#define pb push_back
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-#define all(a) (a).begin(), (a).end()
-const ll MOD = 1e9+7;
-const ll INF = 1e9;
-
 
 //==Divisors of N==
 vi divisors(ll n) {
@@ -72,15 +55,4 @@ ll sumOfDivisors(ll n) {
     }
     if(n > 1) ans *= (1+n);
     return ans;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    vi A = divisors(12), B = divisors(11);
-    for(auto a : A) cout << a << " "; cout << endl;
-    for(auto a : B) cout << a << " "; cout << endl;
-    cout << practicalNum(11) << endl;
-    cout << practicalNum(12) << endl;
-
-    return 0;
 }

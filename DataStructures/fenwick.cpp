@@ -1,3 +1,4 @@
+// Fenwick Tree
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
@@ -46,6 +47,7 @@ int main() {
     printf("%lld\n", ft.rsq(1, 6)); // 7 => ft[6]+ft[4] = 5+2 = 7
     printf("%d\n", ft.select(7)); // index 6, rsq(1, 6) == 7, which is >= 7
     ft.update(5, 1); // update demo
+    cout << "Hello: " << ft.rsq(5,5) << endl;
     printf("%lld\n", ft.rsq(1, 10)); // now 12
     printf("=====\n");
     RUPQ rupq(10);

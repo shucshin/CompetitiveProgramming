@@ -1,15 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-using ld = long double;
-using vi = vector<ll>;
-#define endl '\n'
-#define pb push_back
-#define mp make_pair
-#define all(a) (a).begin(), (a).end()
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-
 struct pt{ll id; ld x, y;}; 
 // This is necessary to be able to use set<pt>
 bool operator<(const pt &p, const pt &q) {
@@ -73,23 +61,4 @@ vector<pt> monotoneChain(vector<pt> &A, bool collinear = 0) {
     FOR(i,0,up.size()) A.pb(up[i]);
     RFOR(i,1,down.size()-1) A.pb(down[i]);
     return A;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
-    int n, x, y; cin >> n;
-    vector<pt> pts; set<pt> tmp;
-    FOR(i,1,n+1) {
-        cin >> x >> y;
-        pt p; p.x = x; p.y = y; p.id = i;
-        tmp.insert(p);
-    }
-    for(auto a : tmp) pts.pb(a);
-    vector<pt> ch = grahamScan(pts, 1);
-    vector<pt> mc = monotoneChain(pts, 1);
-    for(auto p : ch) {printf("%lld %lld\n", (ll)p.x, (ll)p.y);}
-    set<ll> ans;
-    for(auto a : mc) {ans.insert(a.id);}
-    for(auto a : ans) cout << a << " "; cout << endl;
-    return 0;
 }

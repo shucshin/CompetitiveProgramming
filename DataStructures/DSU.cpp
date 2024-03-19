@@ -45,7 +45,7 @@ public:
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    DSU dsu(5);
+    DSU dsu(5); // 0-indexed
     dsu.unite(0,1);
     dsu.unite(4,3);
     dsu.unite(2,3);

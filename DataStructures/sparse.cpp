@@ -1,10 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-using vi = vector<ll>;
-#define endl '\n'
-#define FOR(i,a,b) for(int i = a; i < b; i++)
-
+// Sparse Table
 vector<vi> sparse_table(vi &v) {
     int n = v.size(), k = (int)log2(n)+1; vector<vi> st(n,vi(k));
     FOR(i,0,n) st[i][0] = v[i];

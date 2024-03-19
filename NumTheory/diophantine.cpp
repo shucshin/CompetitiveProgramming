@@ -1,32 +1,7 @@
 // Linear Diophantine Equations
-#include <bits/stdc++.h>
-using namespace std;
-using lli = __int128;
-using ll = long long; // %lld
-using ld = long double; // %0.5Lf
-using vi = vector<ll>;
-using pi = pair<ll,ll>;
-#define endl '\n'
-#define fst first
-#define snd second
-#define pb push_back
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-#define all(a) (a).begin(), (a).end()
-const ll MOD = 1e9+7;
-const ll INF = 1e9;
-
-//==Recursive Extended GCD==
-/* Finds x, y for ax + by = gcd(a,b) */
-ll gcd_ext(ll a, ll b, ll &x, ll &y) {
-    if (b == 0) {x = 1; y = 0; return a;}
-    ll x1, y1, d = gcd_ext(b, a % b, x1, y1);
-    x = y1; y = x1-y1*(a/b);
-    return d;
-}
 
 //==Linear Diophantine Equation==
-// ax + by = c, find x, y
+// ax + by = c, find x, y (gcd_ext in euclidean.cpp)
 bool find_any_sol(ll a, ll b, ll c, ll &x0, ll &y0, ll &g) {
     g = gcd_ext(abs(a), abs(b), x0, y0);
     if(c%g) return false;
@@ -72,10 +47,4 @@ ll find_all_sol(ll a, ll b, ll c, ll minx, ll maxx, ll miny, ll maxy) {
 
     if(lx > rx) return 0;
     return (rx-lx)/abs(b)+1;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-    return 0;
 }

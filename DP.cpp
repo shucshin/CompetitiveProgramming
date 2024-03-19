@@ -1,20 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-using vi = vector<ll>;
-#define endl '\n'
-#define fst first
-#define snd second
-#define pb push_back
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-#define all(a) (a).begin(),(a).end()
-#define lb(v,a) lower_bound(all(v),a)-v.begin()
-#define ub(v,a) upper_bound(all(v),a)-v.begin()
-const ll INF = 1e9;
-
 //==Subset Sum==
-// Determine is there is subset that sums x
+// Determine if there is subset that sums x
 bool subset_sum(vi &A, ll x) {
     ll n = A.size();
     vi dp(x+1); dp[0] = 1;
@@ -114,16 +99,3 @@ int LongestSubsequenceLCM(vi A, int k) {
     return ans;
 }
 
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
-    vi A = {3,4,-1,0,6,2,3};
-    cout << LIS(A) << endl;
-
-    string s = "azAZ", t = "aAzZ";
-    cout << LCS(s,t) << endl;
-    string a = "aAZ", b = "aazz";
-    cout << LCS(a,b) << endl;
-    
-
-    return 0;
-}

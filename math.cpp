@@ -1,17 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-using ld = long double;
-using vi = vector<ll>;
-#define endl '\n';
-#define pb push_back
-#define sq(a) (a)*(a)
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-#define all(a) (a).begin(), (a).end()
-const int INF = 1e9;
-const ll MOD = 1e9+7;
-const ld pi = 3.1415926535897932384626433832795028841971;
+const ld PI = 3.1415926535897932384626433832795028841971; // acos(-1);
 
 // Last number reachable as multiple of k in 1~n
 ll multipleK(ll n, ll k) {
@@ -67,10 +54,4 @@ bool sum_of_potencies(ll k) {
             sum<=k ? l=x+1 : r=x-1;
         }
     } return false;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
-
-    return 0;
 }

@@ -10,8 +10,8 @@ using vi = vector<ll>;
 #define endl '\n'
 #define FOR(i,a,b) for(int i = (a); i < (b); i++)
 #define all(a) (a).begin(), (a).end()
-#define nth(A,k) nth_element(A.begin(), A.begin()+k, A.end())
-#define rnth(A,k) nth_element(A.begin(),A.begin()+k,v.end(), greater<ll>())
+#define nth(A,k)  nth_element(A.begin(),A.begin()+k,A.end())
+#define rnth(A,k) nth_element(A.begin(),A.begin()+k,A.end(), greater<ll>())
 #define fo(a) find_by_order(a)
 #define ok(a) order_of_key(a)
 template<class T> using ost = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;

@@ -1,16 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-using vi = vector<ll>;
-using pi = pair<ll,ll>;
-#define endl '\n'
-#define fst first
-#define snd second
-#define pb push_back
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define all(a) (a).begin(), (a).end()
-#define lb(v,a) lower_bound(v.begin(),v.end(),a)-v.begin()
-
 // Number of bubble sort swaps to sort array
 //==Inversion Count with Merge Sort==
 ll merge(vi &v, vi &A, int l, int m, int r) {
@@ -138,23 +125,4 @@ ll inversionsA(string &s, ll N=1) { // string s repeats N times
     inv += g*((N*(N-1)/2)%MOD);
     inv%=MOD; if(inv < 0) inv += MOD;
     return inv;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
-    vi A = {8,2,3,4,6,5,1,7};
-    cout << "Inversion Index" << inversionIndex(A) << endl;
-    cout << "Inversion Count with Merge Sort: " << inversionCount(A) << endl;
-    cout << "Swaps to sort Array" << min_swaps(A,A.size()) << endl;
-    int m = 8;
-    vi v = {6,5,7,8,4,3,1,2};
-    int ans = 0;
-    swapsBT(v,0,m-1,ans);
-    is_sorted(all(v)) ? printf("%d\n",ans) : printf("-1\n");
-
-    v = {7,8,4,3,1,2,6,5};
-    ans = 0;
-    swapsBT(v,0,m-1,ans);
-    is_sorted(all(v)) ? printf("%d\n",ans) : printf("-1\n");
-    return 0;
 }

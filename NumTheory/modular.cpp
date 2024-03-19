@@ -1,20 +1,6 @@
 // Modular Arithmetic
-#include <bits/stdc++.h>
-using namespace std;
-using lli = __int128;
-using ll = long long; // %lld
-using ld = long double; // %0.5Lf
-using vi = vector<ll>;
-using pi = pair<ll,ll>;
-#define endl '\n'
-#define fst first
-#define snd second
-#define pb push_back
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-#define all(a) (a).begin(), (a).end()
-const ll MOD = 1e9+7;
-const ll INF = 1e9;
+const ll MOD = 1e9+7; // 998244353
+// if(ans < 0) ans += MOD;
 
 //==Binary Exponentiation for Modular Multiplicative Inverse==
 ll inv_bin(ll a, ll b=MOD-2){ // inv_bin(a,MOD-2) :: Modular Inverse of a
@@ -37,17 +23,8 @@ vi inverses(ll m) {
     return inv;
 }
 
-//==Recursive Extended GCD==
-/* Finds x, y for ax + by = gcd(a,b) */
-ll gcd_ext(ll a, ll b, ll &x, ll &y) {
-    if (b == 0) {x = 1; y = 0; return a;}
-    ll x1, y1, d = gcd_ext(b, a % b, x1, y1);
-    x = y1; y = x1-y1*(a/b);
-    return d;
-}
-
 //==Modular Inverse for array of numbers==
-vi invs(vi &A, ll m) {
+vi invs(vi &A, ll m=998244353) {
     ll n = A.size(); if(n==0) return {};
     vi B(n); ll v = 1;
     FOR(i,0,n) {
@@ -59,17 +36,4 @@ vi invs(vi &A, ll m) {
         B[i] = static_cast<ll>(x)*B[i]%m;
         x = static_cast<ll>(x)*A[i]%m;
     } return B;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    vi A = {1,2,3,4,5,6,7,8,9,10};
-    vi B = invs(A,MOD);
-    for(auto a : B) cout << a << " "; cout << endl;
-    vi C = inverses(11);
-    for(auto a : C) cout << a << " "; cout << endl;
-    FOR(i,1,11) {
-        cout << inv(i) << " ";
-    } cout << endl;
-    return 0;
 }

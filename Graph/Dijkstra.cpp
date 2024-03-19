@@ -107,23 +107,14 @@ void DEsopoPape(ll s) {
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    ll n, m, u, v, w; // cin >> n >> m;
-    n = 8;
+    ll n, m, u, v, w; cin >> n >> m;
     AL.assign(n+1,{}); d.assign(n+1,INF); p.assign(n+1,-1);
     M.assign(n+1,2); // for D'Esopo-Pape
 
-    // FOR(_,0,m) { cin >> u >> v >> w; AL[u].pb({v,w}); AL[v].pb({u,w}); }
-    AL[1].pb({2,2}); AL[2].pb({1,2});
-    AL[1].pb({3,3}); AL[3].pb({1,3});
-    AL[2].pb({5,8}); AL[5].pb({2,8});
-    AL[2].pb({4,2}); AL[4].pb({2,2});
-    AL[4].pb({7,4}); AL[7].pb({4,4});
-    AL[3].pb({6,1}); AL[6].pb({3,1});
-    AL[5].pb({6,3}); AL[6].pb({5,3});
-    AL[5].pb({7,10}); AL[7].pb({5,10});
-    AL[6].pb({8,4}); AL[8].pb({6,4});
-    AL[7].pb({8,1}); AL[8].pb({7,1});
-    AL[1].pb({7,5}); AL[7].pb({1,5});
+    FOR(_,0,m) { 
+        cin >> u >> v >> w; 
+        AL[u].pb({v,w}); AL[v].pb({u,w}); 
+    }
 
     // DEsopoPape(1);
     // dijkstraPQ(1);

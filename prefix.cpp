@@ -1,11 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-using vi = vector<ll>;
-using pi = pair<ll,ll>;
-#define endl '\n'
-#define FOR(i,a,b) for(int i = a; i < b; i++)
-
 //==Prefix Sum==
 vi prefixSum(vi &A) {
     int n = A.size(); vi pfx(n+1);
@@ -45,7 +37,7 @@ vector<vi> prefixSum2D(vector<vi> &A) { // 1-indexed
 // Sum of [x1,x2]x[y1,y2] | 1-indexed
 ll sum2D(ll x1, ll x2, ll y1, ll y2, vector<vi> &pfx) {
     return pfx[x2][y2] - pfx[x1-1][y2] - pfx[x2][y1-1] + pfx[x1-1][y1-1];
-} 
+} // x: 3~5, y: 2~3 = sum2D(3,5,2,3,pfx)
 
 //==Precalculate Prefix Bitwise for Query==
 vector<vi> prefixBIT(vi &A) {
@@ -71,39 +63,4 @@ ll rangeBIT(ll l, ll r, vector<vi> &pfx) {
         // if(x != 0) ans = (ans | (1 << i)); // OR
     }
     return ans;
-}
-
-//==Prefix Multiplication Except Self==
-vi productExceptSelf(vi &v) {
-    int n = v.size();
-    vi prefix(n), suffix(n), ans;
-    int p = 1, s = 1;
-    rep(i,0,n) {prefix[i] = p *= v[i]; suffix[n-1-i] = s *= v[n-1-i];}
-    rep(i,0,n) {
-        if(!i) {ans.pb(suffix[i+1]); continue;}
-        if(i==n-1) {ans.pb(prefix[i-1]); continue;}
-        ans.pb(prefix[i-1]*suffix[i+1]);
-    } return ans;
-}
-
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
-    vi v = {1,2,3,4,5,6,7,8,9,10};
-    int n = v.size();
-    vi pfx = prefixSum(v);
-    cout << "Range 3~5: " << pfx[5]-pfx[3-1] << endl;
-
-    //==2D Prefix Sum==
-    vector<vi> v2d = {
-        {0,0,0,0,0,0},
-        {0,1,2,3,4,5},
-        {0,1,2,3,4,5},
-        {0,1,2,3,4,5},
-        {0,1,2,3,4,5},
-        {0,1,2,3,4,5}
-    }; n = v2d.size()-1;
-    vector<vi> pfx2D = prefixSum2D(v2d);
-    // x = 3~5, y = 2~3
-    cout << "x: 3~5, y: 2~3 = " << sum2D(3,5,2,3,pfx2D) << endl;
-    return 0;
 }
