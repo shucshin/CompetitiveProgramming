@@ -1,26 +1,9 @@
 // Bellman-Ford Algorithm
-#include <bits/stdc++.h>
-using namespace std;
-using lli = __int128;
-using ll = long long; // %lld
-using ld = long double; // %0.5Lf
-using vi = vector<ll>;
-using pi = pair<ll,ll>;
-#define endl '\n'
-#define fst first
-#define snd second
-#define pb push_back
-#define FOR(i,a,b) for(int i = (a); i < (b); i++)
-#define RFOR(i,a,b) for(int i = (b)-1; i >= (a); i--)
-#define all(a) (a).begin(), (a).end()
-const ll MOD = 1e9+7;
-const ll INF = 1e18;
-
 struct Edge {ll u, v, w;};
 vector<Edge> edges;
 
-vector<vector<pi>> AL;
-vi d, p; // d = distance, p = parent
+vector<vector<pi>> AL(n+1,{});
+vi d(n+1,INF), p(n+1,-1); // d = distance, p = parent
 
 // Bellman-Ford (No Negative Edges)
 void bellmanFord(ll s) {
@@ -109,41 +92,22 @@ bool spfa(ll s) {
     } return true;
 }
 
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    ll n, m, q, u, v, w; // cin >> n >> m;
-    AL.assign(n+1,{}); d.assign(n+1,INF); p.assign(n+1,-1);
+// Edges
+FOR(_,0,m) {
+    cin >> u >> v >> w;
+    edges.pb({u,v,w});
+    AL[u].pb({v,w}); // AL[v].pb({u,w});
+} 
 
-    // Edges
-    FOR(_,0,m) {
-        cin >> u >> v >> w;
-        edges.pb({u,v,w});
-        AL[u].pb({v,w}); // AL[v].pb({u,w});
-    } 
+// bellmanFord(1); // No Neg Edges
+vi A = bellmanFordNC(1,n+1);
+negative_infinity(n);
+// !spfa(1) ? printf("Neg Cycle\n") : printf("No Neg Cycle\n");
 
-    // bellmanFord(1); // No Neg Edges
-    vi A = bellmanFordNC(1,n+1); for(auto a : A) cout << a << " "; cout << endl;
-    negative_infinity(n);
-    // !spfa(1) ? printf("Neg Cycle\n") : printf("No Neg Cycle\n");
-
-    // Queries
-    FOR(_,0,q) {
-        cin >> u;
-        if(d[u]==INF) cout << "Impossible\n"; // No Path
-        else if(d[u]==-INF) cout << "-Infinity\n"; // Neg Cycle
-        else cout << d[u] << endl;
-    }
-
-    // Reset
-    // edges.clear(); AL.clear(); d.clear(); p.clear(); 
-
-    FOR(i,1,9) cout << d[i] << " "; cout << endl;
-    FOR(i,1,9) cout << p[i] << " "; cout << endl;
-
-    FOR(i,1,9) {
-        vi A = getPath(i);
-        cout << "Path: "; for(auto a : A) cout << a << " "; cout << endl;
-    }
-
-    return 0;
+// Queries
+FOR(_,0,q) {
+    cin >> u;
+    if(d[u]==INF)       cout << "Impossible\n"; // No Path
+    else if(d[u]==-INF) cout << "-Infinity\n";  // Neg Cycle
+    else                cout << d[u] << endl;
 }

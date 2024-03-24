@@ -41,6 +41,7 @@ Repository to update all my Competitive Programming Templates
 ### Graph
 1. [Graph](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph/Graph.cpp)
 1. [Bipartite Check](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph/Bipartite.cpp)
+1. [Centroids](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph/Centroid.cpp)
 1. [Cycles](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph/Cycle.cpp)
 1. [Shortest Paths](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph/ShortestPaths.cpp)
 1. [Floyd Warshall](https://github.com/shucshin/CompetitiveProgramming/blob/main/Graph/FloydWarshall.cpp)

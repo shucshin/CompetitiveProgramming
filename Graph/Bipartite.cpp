@@ -1,6 +1,6 @@
 // Bipartite Check
-vector<vi> AL;
-vi color;
+vector<vi> AL(n+1,{});
+vi color(n+1,INF);
  
 pair<bool,vi> bipartite_check(ll n) {
     bool bipartite = 1; queue<ll> q;
@@ -18,22 +18,10 @@ pair<bool,vi> bipartite_check(ll n) {
     return {bipartite,color};
 }
 
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    ll n, m, u, v; cin >> n >> m;
-    AL.assign(n+1,{}); color.assign(n+1,INF);
-    FOR(_,0,m) {
-        cin >> u >> v;
-        AL[u].pb(v); AL[v].pb(u);
-    }
- 
-    pair<bool,vi> A = bipartite_check(n);
-    if(A.fst == false) {
-        cout << "IMPOSSIBLE\n";
-    } else {
-        FOR(i,1,n+1) cout << A.snd[i]+1 << " ";
-        cout << endl;
-    }
-
-    return 0;
+pair<bool,vi> A = bipartite_check(n);
+if(A.fst == false) {
+    cout << "IMPOSSIBLE\n";
+} else {
+    FOR(i,1,n+1) cout << A.snd[i]+1 << " ";
+    cout << endl;
 }

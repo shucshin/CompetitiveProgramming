@@ -6,7 +6,9 @@ A.cpp
 B.cpp
 _*.cpp
 *.java
+*.class
 math_implementation.cpp
+num_implementation.cpp
 
 # Compiled Object files
 *.slo
